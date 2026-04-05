@@ -1,55 +1,57 @@
+/* Google Fonts — must be first */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-/* ─────────────────────────────────────────── */
-/*  DESIGN TOKENS — Rocket Money inspired      */
-/*  Deep forest green + crisp off-white        */
-/* ─────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════ */
+/*  LIGHT MODE TOKENS (default)                       */
+/* ═══════════════════════════════════════════════════ */
 @theme {
-  /* Core palette */
-  --color-brand: #1a6b45;
-  /* deep green primary */
-  --color-brand-dark: #134f33;
-  /* hover / pressed */
-  --color-brand-light: #d1fae5;
-  /* tint backgrounds */
-  --color-accent: #f59e0b;
-  /* amber accent */
+  --color-brand: #EE3124;
+  --color-brand-hover: #d42a1f;
+  --color-brand-light: #fff0ef;
 
-  /* Dark-mode surfaces */
-  --color-background: #0d1f17;
-  /* very dark green-black */
-  --color-surface: #162a1e;
-  /* card bg */
-  --color-surface-2: #1e3829;
-  /* elevated surface */
-  --color-border: #2d5240;
-  /* subtle dividers */
+  --color-background: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f5f5f7;
+  --color-surface-2: #f9fafb;
+  --color-border: #e5e7eb;
 
-  /* Text */
-  --color-foreground: #f0fdf4;
-  /* near-white on dark */
-  --color-muted: #6ee7b7;
-  /* muted green text */
-  --color-muted-2: #86efac;
+  --color-foreground: #0a0a0a;
+  --color-muted-foreground: #6b7280;
 
-  /* Semantic */
-  --color-primary: #22c55e;
-  /* bright green CTAs */
-  --color-primary-dark: #16a34a;
-  --color-primary-foreground: #0d1f17;
+  --color-primary: #EE3124;
+  --color-primary-dark: #d42a1f;
+  --color-primary-foreground: #ffffff;
 
-  --color-secondary: #1e3829;
-  --color-secondary-foreground: #f0fdf4;
+  --color-secondary: #f5f5f7;
+  --color-secondary-foreground: #0a0a0a;
+
+  --color-card: #ffffff;
+  --color-card-foreground: #0a0a0a;
 
   --color-destructive: #ef4444;
   --color-destructive-foreground: #fff;
-  --color-ring: #22c55e;
+  --color-ring: #EE3124;
+}
 
-  /* Aliases used by existing components */
-  --color-card: var(--color-surface);
-  --color-card-foreground: var(--color-foreground);
-  --color-muted-foreground: #6ee7b7;
+/* ═══════════════════════════════════════════════════ */
+/*  DARK MODE OVERRIDES — applied when html.dark       */
+/* ═══════════════════════════════════════════════════ */
+:root.dark {
+  --color-background: #0f0f0f;
+  --color-surface: #1a1a1a;
+  --color-surface-alt: #111111;
+  --color-surface-2: #222222;
+  --color-border: #2d2d2d;
+
+  --color-foreground: #f5f5f5;
+  --color-muted-foreground: #9ca3af;
+
+  --color-card: #1a1a1a;
+  --color-card-foreground: #f5f5f5;
+
+  --color-secondary: #222222;
+  --color-secondary-foreground: #f5f5f5;
 }
 
 *,
@@ -62,36 +64,51 @@
 
 html {
   scroll-behavior: smooth;
+  /* smooth colour transition on theme switch */
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 body {
   background-color: var(--color-background);
-  color: var(--(--color-foreground, #f0fdf4));
+  color: var(--color-foreground);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ─────────────────────────────────────────── */
-/*  LANDING PAGE UTILITIES                     */
-/* ─────────────────────────────────────────── */
-
-/* hero gradient backdrop */
-.hero-gradient {
-  background: radial-gradient(ellipse 80% 60% at 50% -10%,
-      rgba(34, 197, 94, 0.22) 0%,
-      transparent 70%);
+/* ═══════════════════════════════════════════════════ */
+/*  TYPOGRAPHY                                         */
+/* ═══════════════════════════════════════════════════ */
+.font-display {
+  font-family: 'Inter Tight', 'Inter', sans-serif;
 }
 
-/* glass card */
-.glass {
-  background: rgba(22, 42, 30, 0.65);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(45, 82, 64, 0.7);
+/* ═══════════════════════════════════════════════════ */
+/*  SKELETON SHIMMER                                   */
+/* ═══════════════════════════════════════════════════ */
+@keyframes shimmer {
+  0% {
+    background-position: -800px 0;
+  }
+
+  100% {
+    background-position: 800px 0;
+  }
 }
 
-/* subtle scrollbar */
+.skeleton {
+  background: linear-gradient(90deg,
+      var(--color-surface) 25%,
+      var(--color-surface-2) 50%,
+      var(--color-surface) 75%);
+  background-size: 1600px 100%;
+  animation: shimmer 1.6s infinite linear;
+  border-radius: 0.5rem;
+}
+
+/* ═══════════════════════════════════════════════════ */
+/*  SCROLLBAR                                          */
+/* ═══════════════════════════════════════════════════ */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -104,25 +121,4 @@ body {
 ::-webkit-scrollbar-thumb {
   background: var(--color-border);
   border-radius: 99px;
-}
-
-/* skeleton pulse */
-@keyframes shimmer {
-  0% {
-    background-position: -400px 0;
-  }
-
-  100% {
-    background-position: 400px 0;
-  }
-}
-
-.skeleton {
-  background: linear-gradient(90deg,
-      var(--color-surface) 25%,
-      var(--color-surface-2) 50%,
-      var(--color-surface) 75%);
-  background-size: 800px 100%;
-  animation: shimmer 1.4s infinite linear;
-  border-radius: 0.5rem;
 }
