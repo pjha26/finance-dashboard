@@ -2,7 +2,7 @@ import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recha
 import { useFinanceContext } from '../../context/FinanceContext';
 import { useMemo } from 'react';
 
-const COLORS = ['#EE3124', '#f59e0b', '#3b82f6', '#8b5cf6', '#10b981', '#f43f5e', '#06b6d4'];
+const COLORS = ['#3B82F6', '#22C55E', '#8B5CF6', '#F97316', '#14B8A6', '#EAB308'];
 
 export const SpendingBreakdownChart = () => {
     const { transactions } = useFinanceContext();

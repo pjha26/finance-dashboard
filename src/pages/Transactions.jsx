@@ -116,7 +116,7 @@ const Transactions = () => {
                                             </span>
                                         </td>
                                         <td className="px-6 py-4 text-right font-semibold whitespace-nowrap">
-                                            <span className={t.type === 'income' ? 'text-emerald-500' : 'text-rose-400'}>
+                                            <span className={t.type === 'income' ? 'text-success' : 'text-danger'}>
                                                 {t.type === 'income' ? '+' : '-'}${Number(t.amount).toFixed(2)}
                                             </span>
                                         </td>

@@ -18,7 +18,7 @@ export const InsightsSection = () => {
             const top = Object.entries(cats).sort((a, b) => b[1] - a[1])[0];
             results.push({
                 icon: AlertCircle,
-                color: 'text-rose-600 bg-rose-50',
+                color: 'text-danger bg-danger-light',
                 title: 'Top Expense Category',
                 desc: `You spent the most on ${top[0]} ($${top[1].toFixed(0)}). Consider reviewing this budget.`,
             });
@@ -26,8 +26,8 @@ export const InsightsSection = () => {
 
         results.push(
             summary.balance >= 0
-                ? { icon: TrendingUp, color: 'text-emerald-600 bg-emerald-50', title: 'Positive Cashflow', desc: `Great! Your income exceeds expenses by $${summary.balance.toFixed(0)} this month.` }
-                : { icon: Compass, color: 'text-amber-600 bg-amber-50', title: 'Expenses Exceed Income', desc: `You're spending $${Math.abs(summary.balance).toFixed(0)} more than you earn. Try cutting back.` }
+                ? { icon: TrendingUp, color: 'text-success bg-success-light', title: 'Positive Cashflow', desc: `Great! Your income exceeds expenses by $${summary.balance.toFixed(0)} this month.` }
+                : { icon: Compass, color: 'text-warning bg-warning-light', title: 'Expenses Exceed Income', desc: `You're spending $${Math.abs(summary.balance).toFixed(0)} more than you earn. Try cutting back.` }
         );
 
         return results;

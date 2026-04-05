@@ -4,12 +4,12 @@ export const SummaryCard = ({ title, amount, type = 'neutral' }) => {
     const Icon = type === 'income' ? TrendingUp : type === 'expense' ? TrendingDown : DollarSign;
 
     const iconStyle =
-        type === 'income' ? 'text-emerald-600 bg-emerald-50'
-            : type === 'expense' ? 'text-rose-600 bg-rose-50'
-                : 'text-brand bg-brand/10';
+        type === 'income' ? 'text-success bg-success-light'
+            : type === 'expense' ? 'text-danger bg-danger-light'
+                : 'text-brand bg-brand-light';
 
     const amountColor =
-        type === 'income' ? 'text-emerald-600'
+        type === 'income' ? 'text-success'
             : type === 'expense' ? 'text-gray-900'
                 : 'text-brand';
 

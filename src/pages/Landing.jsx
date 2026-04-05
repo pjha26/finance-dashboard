@@ -19,7 +19,7 @@ const SpendingMockCard = () => (
         <div className="mt-5 space-y-3">
             {[
                 { cat: 'Subscriptions', amount: -142, pct: 20, color: 'bg-brand' },
-                { cat: 'Dining', amount: -387, pct: 55, color: 'bg-amber-400' },
+                { cat: 'Dining', amount: -387, pct: 55, color: 'bg-warning' },
                 { cat: 'Rent', amount: -1500, pct: 100, color: 'bg-gray-200' },
             ].map(({ cat, amount, pct, color }) => (
                 <div key={cat}>
@@ -72,7 +72,7 @@ const CreditMockCard = () => (
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <span className="text-3xl font-black text-gray-900">748</span>
-                <span className="text-xs text-emerald-600 font-semibold">Good</span>
+                <span className="text-xs text-success font-semibold">Good</span>
             </div>
         </div>
         <p className="text-xs text-gray-400 text-center">Updated today · No impact to score</p>
@@ -84,7 +84,7 @@ const SavingsMockCard = () => (
     <div className="bg-white rounded-3xl shadow-2xl shadow-black/10 border border-gray-100 p-6 w-full max-w-sm mx-auto">
         <div className="flex items-center justify-between mb-4">
             <p className="text-sm text-gray-500 font-medium">Emergency Fund</p>
-            <span className="text-xs bg-emerald-50 text-emerald-600 font-semibold px-2.5 py-1 rounded-full">On track</span>
+            <span className="text-xs bg-success-light text-success font-semibold px-2.5 py-1 rounded-full">On track</span>
         </div>
         <p className="text-3xl font-black text-gray-900 font-display">$3,200</p>
         <p className="text-sm text-gray-400 mt-1">Goal: $5,000</p>

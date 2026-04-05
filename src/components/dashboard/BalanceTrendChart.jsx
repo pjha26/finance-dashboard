@@ -15,8 +15,8 @@ export const BalanceTrendChart = () => (
                 <AreaChart data={data} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
                     <defs>
                         <linearGradient id="gradBalance" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#EE3124" stopOpacity={0.15} />
-                            <stop offset="95%" stopColor="#EE3124" stopOpacity={0} />
+                            <stop offset="5%" stopColor="#2563EB" stopOpacity={0.15} />
+                            <stop offset="95%" stopColor="#2563EB" stopOpacity={0} />
                         </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
@@ -27,7 +27,7 @@ export const BalanceTrendChart = () => (
                         itemStyle={{ color: '#111' }}
                         formatter={(v) => [`$${v.toLocaleString()}`, 'Balance']}
                     />
-                    <Area type="monotone" dataKey="balance" stroke="#EE3124" strokeWidth={3} fill="url(#gradBalance)" />
+                    <Area type="monotone" dataKey="balance" stroke="#2563EB" strokeWidth={3} fill="url(#gradBalance)" />
                 </AreaChart>
             </ResponsiveContainer>
         </div>
