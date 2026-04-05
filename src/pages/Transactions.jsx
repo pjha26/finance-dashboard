@@ -3,9 +3,10 @@ import { format } from 'date-fns';
 import { useFinanceContext } from '../context/FinanceContext';
 import { useAppContext } from '../context/AppContext';
 import { Search, Plus, Trash2, Filter } from 'lucide-react';
+import { TransactionsSkeleton } from '../components/common/Skeleton';
 
 const Transactions = () => {
-    const { transactions, deleteTransaction, addTransaction } = useFinanceContext();
+    const { transactions, deleteTransaction, addTransaction, isLoading } = useFinanceContext();
     const { role } = useAppContext();
     const [searchTerm, setSearchTerm] = useState('');
     const [filterType, setFilterType] = useState('all');
@@ -28,6 +29,8 @@ const Transactions = () => {
             description: 'System Generated'
         });
     };
+
+    if (isLoading) return <TransactionsSkeleton />;
 
     return (
         <div className="h-full flex flex-col gap-6 animate-in fade-in duration-500 pb-16">

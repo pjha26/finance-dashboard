@@ -3,14 +3,17 @@ import { SummaryCard } from '../components/dashboard/SummaryCard';
 import { BalanceTrendChart } from '../components/dashboard/BalanceTrendChart';
 import { SpendingBreakdownChart } from '../components/dashboard/SpendingBreakdownChart';
 import { InsightsSection } from '../components/dashboard/InsightsSection';
+import { DashboardSkeleton } from '../components/common/Skeleton';
 
 const Dashboard = () => {
-    const { summary } = useFinanceContext();
+    const { summary, isLoading } = useFinanceContext();
+
+    if (isLoading) return <DashboardSkeleton />;
 
     return (
         <div className="h-full flex flex-col gap-8 animate-in fade-in duration-500 pb-16">
             <header>
-                <h1 className="text-3xl font-bold tracking-tight">Overview</h1>
+                <h1 className="text-3xl font-bold tracking-tight text-foreground">Overview</h1>
                 <p className="text-muted-foreground mt-1 text-sm md:text-base">Here is your financial summary for the month.</p>
             </header>
 

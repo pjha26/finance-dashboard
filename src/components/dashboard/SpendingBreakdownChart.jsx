@@ -2,7 +2,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recha
 import { useFinanceContext } from '../../context/FinanceContext';
 import { useMemo } from 'react';
 
-const COLORS = ['#3b82f6', '#8b5cf6', '#ef4444', '#f59e0b', '#10b981'];
+const COLORS = ['#3b82f6', '#8b5cf6', '#ef4444', '#f59e0b', '#10b981', '#f43f5e', '#06b6d4'];
 
 export const SpendingBreakdownChart = () => {
     const { transactions } = useFinanceContext();
@@ -20,18 +20,18 @@ export const SpendingBreakdownChart = () => {
     }, [transactions]);
 
     return (
-        <div className="bg-card p-6 rounded-2xl border border-border w-full h-[350px] shadow-sm flex flex-col">
-            <h3 className="text-lg font-semibold mb-2 text-foreground">Spending Breakdown</h3>
-            <div className="flex-1 min-h-0">
-                <ResponsiveContainer width="100%" height="100%">
+        <div className="bg-card p-6 rounded-2xl border border-border w-full min-h-[420px] shadow-sm flex flex-col">
+            <h3 className="text-lg font-semibold mb-4 text-foreground">Spending Breakdown</h3>
+            <div className="flex-1 w-full flex items-center justify-center">
+                <ResponsiveContainer width="100%" height={300}>
                     {data.length > 0 ? (
-                        <PieChart>
+                        <PieChart margin={{ top: 0, right: 0, bottom: 20, left: 0 }}>
                             <Pie
                                 data={data}
                                 cx="50%"
-                                cy="50%"
-                                innerRadius={60}
-                                outerRadius={80}
+                                cy="45%"
+                                innerRadius={70}
+                                outerRadius={90}
                                 paddingAngle={5}
                                 dataKey="value"
                             >
@@ -44,7 +44,11 @@ export const SpendingBreakdownChart = () => {
                                 itemStyle={{ color: 'var(--color-foreground)' }}
                                 formatter={(value) => `$${value}`}
                             />
-                            <Legend verticalAlign="bottom" height={36} iconType="circle" />
+                            <Legend
+                                verticalAlign="bottom"
+                                iconType="circle"
+                                wrapperStyle={{ bottom: "-10px", lineHeight: "24px" }}
+                            />
                         </PieChart>
                     ) : (
                         <div className="h-full flex items-center justify-center">

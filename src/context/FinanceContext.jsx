@@ -1,10 +1,19 @@
-import { createContext, useContext, useState, useMemo } from 'react';
+import { createContext, useContext, useState, useMemo, useEffect } from 'react';
 import { mockTransactions } from '../data/mockData';
 
 const FinanceContext = createContext();
 
 export const FinanceProvider = ({ children }) => {
-    const [transactions, setTransactions] = useState(mockTransactions);
+    const [transactions, setTransactions] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setTransactions(mockTransactions);
+            setIsLoading(false);
+        }, 1200);
+        return () => clearTimeout(timer);
+    }, []);
 
     const addTransaction = (transaction) => {
         setTransactions(prev => [{ ...transaction, id: Date.now() }, ...prev]);
@@ -14,7 +23,6 @@ export const FinanceProvider = ({ children }) => {
         setTransactions(prev => prev.filter(t => t.id !== id));
     };
 
-    // Derived state
     const summary = useMemo(() => {
         let income = 0;
         let expenses = 0;
@@ -30,7 +38,8 @@ export const FinanceProvider = ({ children }) => {
             transactions,
             addTransaction,
             deleteTransaction,
-            summary
+            summary,
+            isLoading
         }}>
             {children}
         </FinanceContext.Provider>
