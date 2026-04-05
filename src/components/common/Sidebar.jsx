@@ -1,5 +1,5 @@
 import { NavLink, Link } from 'react-router-dom';
-import { LayoutDashboard, Receipt, User, DollarSign, Sun, Moon } from 'lucide-react';
+import { LayoutDashboard, Receipt, User, DollarSign, Sun, Moon, Target, Briefcase, Wallet } from 'lucide-react';
 import { useAppContext } from '../../context/AppContext';
 
 const Sidebar = () => {
@@ -40,6 +40,42 @@ const Sidebar = () => {
                 >
                     <Receipt size={19} />
                     Transactions
+                </NavLink>
+                <NavLink
+                    to="/budgets"
+                    className={({ isActive }) =>
+                        `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${isActive
+                            ? 'bg-brand text-surface shadow-[0_4px_24px_-4px_rgba(19,27,46,0.3)]'
+                            : 'text-muted-foreground hover:bg-surface-2 hover:text-foreground'
+                        }`
+                    }
+                >
+                    <Target size={19} />
+                    Budgets & Goals
+                </NavLink>
+                <NavLink
+                    to="/accounts"
+                    className={({ isActive }) =>
+                        `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${isActive
+                            ? 'bg-brand text-surface shadow-[0_4px_24px_-4px_rgba(19,27,46,0.3)]'
+                            : 'text-muted-foreground hover:bg-surface-2 hover:text-foreground'
+                        }`
+                    }
+                >
+                    <Wallet size={19} />
+                    Accounts & Vaults
+                </NavLink>
+                <NavLink
+                    to="/portfolio"
+                    className={({ isActive }) =>
+                        `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${isActive
+                            ? 'bg-brand text-surface shadow-[0_4px_24px_-4px_rgba(19,27,46,0.3)]'
+                            : 'text-muted-foreground hover:bg-surface-2 hover:text-foreground'
+                        }`
+                    }
+                >
+                    <Briefcase size={19} />
+                    Investment Portfolio
                 </NavLink>
             </nav>
 

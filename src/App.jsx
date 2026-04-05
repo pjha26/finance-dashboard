@@ -2,6 +2,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Landing from './pages/Landing';
 import Dashboard from './pages/Dashboard';
 import Transactions from './pages/Transactions';
+import Budgets from './pages/Budgets';
+import Portfolio from './pages/Portfolio';
+import Accounts from './pages/Accounts';
 import Sidebar from './components/common/Sidebar';
 import { Navbar } from './components/common/Navbar';
 import { FinanceProvider } from './context/FinanceContext';
@@ -35,6 +38,15 @@ function App() {
             } />
             <Route path="/transactions" element={
               <AppShell><Transactions /></AppShell>
+            } />
+            <Route path="/budgets" element={
+              <AppShell><Budgets /></AppShell>
+            } />
+            <Route path="/portfolio" element={
+              <AppShell><Portfolio /></AppShell>
+            } />
+            <Route path="/accounts" element={
+              <AppShell><Accounts /></AppShell>
             } />
           </Routes>
         </BrowserRouter>

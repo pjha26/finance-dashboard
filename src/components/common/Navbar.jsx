@@ -36,6 +36,21 @@ export const Navbar = () => {
                             `p-3 rounded-xl font-semibold text-sm transition-colors ${isActive ? 'bg-brand text-surface' : 'text-muted-foreground hover:bg-surface-2'}`
                         }
                     >Transactions</NavLink>
+                    <NavLink to="/budgets" onClick={() => setOpen(false)}
+                        className={({ isActive }) =>
+                            `p-3 rounded-xl font-semibold text-sm transition-colors ${isActive ? 'bg-brand text-surface' : 'text-muted-foreground hover:bg-surface-2'}`
+                        }
+                    >Budgets & Goals</NavLink>
+                    <NavLink to="/accounts" onClick={() => setOpen(false)}
+                        className={({ isActive }) =>
+                            `p-3 rounded-xl font-semibold text-sm transition-colors ${isActive ? 'bg-brand text-surface' : 'text-muted-foreground hover:bg-surface-2'}`
+                        }
+                    >Accounts & Vaults</NavLink>
+                    <NavLink to="/portfolio" onClick={() => setOpen(false)}
+                        className={({ isActive }) =>
+                            `p-3 rounded-xl font-semibold text-sm transition-colors ${isActive ? 'bg-brand text-surface' : 'text-muted-foreground hover:bg-surface-2'}`
+                        }
+                    >Investment Portfolio</NavLink>
 
                     <div className="h-px bg-surface-2 my-1" />
 
