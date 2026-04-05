@@ -61,10 +61,10 @@ const Transactions = () => {
                         placeholder="Search by description or category..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2.5 bg-card border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-all"
+                        className="w-full pl-10 pr-4 py-2.5 bg-surface-alt rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:bg-surface-2 transition-all shadow-[inset_0_2px_4px_rgba(11,28,48,0.02)]"
                     />
                 </div>
-                <div className="flex items-center gap-2 bg-card border border-border rounded-lg px-3 shadow-sm">
+                <div className="flex items-center gap-2 bg-surface-alt rounded-lg px-3 shadow-[inset_0_2px_4px_rgba(11,28,48,0.02)]">
                     <Filter size={16} className="text-muted-foreground shrink-0" />
                     <select
                         value={filterType}
@@ -79,10 +79,10 @@ const Transactions = () => {
             </div>
 
             {/* Table */}
-            <div className="bg-card border border-border rounded-xl shadow-sm overflow-hidden">
+            <div className="bg-surface rounded-xl shadow-[0_4px_24px_-4px_rgba(11,28,48,0.02)] overflow-hidden p-2">
                 <div className="overflow-x-auto">
-                    <table className="w-full text-sm text-left border-collapse">
-                        <thead className="text-xs text-muted-foreground bg-secondary/40 border-b border-border">
+                    <table className="w-full text-sm text-left border-separate border-spacing-y-1">
+                        <thead className="text-xs text-muted-foreground bg-surface-alt rounded-lg">
                             <tr>
                                 <th className="px-6 py-4 font-medium whitespace-nowrap">Date</th>
                                 <th className="px-6 py-4 font-medium">Description</th>
@@ -93,7 +93,7 @@ const Transactions = () => {
                                 )}
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-border/40">
+                        <tbody>
                             {filteredTransactions.length === 0 ? (
                                 <tr>
                                     <td
@@ -105,26 +105,26 @@ const Transactions = () => {
                                 </tr>
                             ) : (
                                 filteredTransactions.map((t) => (
-                                    <tr key={t.id} className="hover:bg-secondary/20 transition-colors group">
-                                        <td className="px-6 py-4 whitespace-nowrap text-muted-foreground">
+                                    <tr key={t.id} className="hover:bg-surface-alt transition-colors group rounded-xl overflow-hidden">
+                                        <td className="px-6 py-4 whitespace-nowrap text-muted-foreground rounded-l-xl">
                                             {format(new Date(t.date + 'T00:00:00'), 'MMM dd, yyyy')}
                                         </td>
-                                        <td className="px-6 py-4 font-medium text-foreground">{t.description}</td>
+                                        <td className="px-6 py-4 font-bold font-display text-base text-foreground">{t.description}</td>
                                         <td className="px-6 py-4">
-                                            <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-secondary text-secondary-foreground border border-border/50">
+                                            <span className="inline-flex items-center px-2.5 py-1 rounded-md text-[10px] uppercase tracking-widest font-bold bg-surface-alt text-muted-foreground">
                                                 {t.category}
                                             </span>
                                         </td>
-                                        <td className="px-6 py-4 text-right font-semibold whitespace-nowrap">
+                                        <td className="px-6 py-4 text-right font-black font-display whitespace-nowrap">
                                             <span className={t.type === 'income' ? 'text-success' : 'text-danger'}>
                                                 {t.type === 'income' ? '+' : '-'}${Number(t.amount).toFixed(2)}
                                             </span>
                                         </td>
                                         {role === 'admin' && (
-                                            <td className="px-6 py-4 text-right">
+                                            <td className="px-6 py-4 text-right rounded-r-xl">
                                                 <button
                                                     onClick={() => deleteTransaction(t.id)}
-                                                    className="inline-flex items-center justify-center p-2 rounded-md text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
+                                                    className="inline-flex items-center justify-center p-2 rounded-md text-muted-foreground hover:text-white hover:bg-danger transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
                                                     aria-label="Delete transaction"
                                                 >
                                                     <Trash2 size={15} />

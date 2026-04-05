@@ -13,8 +13,8 @@ const Dashboard = () => {
     return (
         <div className="flex flex-col gap-8 pb-16 animate-in fade-in duration-500">
             <header>
-                <h1 className="text-3xl font-bold tracking-tight text-foreground">Overview</h1>
-                <p className="text-muted-foreground mt-1 text-sm">Your financial summary for the month.</p>
+                <h1 className="text-4xl lg:text-[2.5rem] leading-none font-black tracking-tight font-display text-foreground">Overview</h1>
+                <p className="text-muted-foreground mt-2 text-sm max-w-sm">Your financial narrative for the current period, organized.</p>
             </header>
 
             {/* Summary Cards — natural height, not flex-1 */}

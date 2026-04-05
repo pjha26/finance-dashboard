@@ -1,69 +1,79 @@
 /* Google Fonts — must be first */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════ */
 /*  LIGHT MODE TOKENS (default)                       */
 /* ═══════════════════════════════════════════════════ */
 @theme {
-  --color-brand: #2563EB;
-  --color-brand-hover: #1D4ED8;
-  --color-brand-light: #DBEAFE;
+  --color-brand: #131b2e;
+  --color-brand-hover: #282f44;
+  --color-brand-light: #dce9ff;
 
-  --color-background: #F8FAFC;
-  --color-surface: #FFFFFF;
-  --color-surface-alt: #F8FAFC;
-  --color-surface-2: #F1F5F9;
-  --color-border: #E5E7EB;
+  --color-background: #f8f9ff;
+  --color-surface: #ffffff;
+  /* surface-container-lowest */
+  --color-surface-alt: #eff4ff;
+  /* surface-container-low */
+  --color-surface-2: #dce9ff;
+  /* surface-container-high */
+  --color-border: transparent;
+  /* No explicit standard borders */
 
-  --color-foreground: #111827;
-  --color-muted-foreground: #6B7280;
-  --color-disabled-foreground: #9CA3AF;
+  --color-foreground: #0b1c30;
+  /* on_surface */
+  --color-muted-foreground: #454652;
+  /* on_surface_variant */
+  --color-disabled-foreground: #767683;
 
-  --color-success: #16A34A;
-  --color-success-light: #DCFCE7;
+  --color-success: #006c49;
+  /* secondary */
+  --color-success-light: #6cf8bb;
+  /* secondary_container */
 
-  --color-danger: #DC2626;
-  --color-danger-light: #FEE2E2;
+  --color-danger: #400004;
+  /* tertiary */
+  --color-danger-light: #ffdad7;
+  /* tertiary_container/fixed */
 
-  --color-warning: #F59E0B;
-  --color-warning-light: #FEF3C7;
+  --color-warning: #ff635e;
+  --color-warning-light: #ffdad6;
 
-  /* Charts */
-  --color-chart-1: #3B82F6;
-  --color-chart-2: #22C55E;
-  --color-chart-3: #8B5CF6;
-  --color-chart-4: #F97316;
-  --color-chart-5: #14B8A6;
-  --color-chart-6: #EAB308;
+  /* Sovereign Chart Colors */
+  --color-chart-1: #131b2e;
+  --color-chart-2: #006c49;
+  --color-chart-3: #dae2fd;
+  --color-chart-4: #400004;
+  --color-chart-5: #6cf8bb;
+  --color-chart-6: #ffdad7;
 }
 
 /* ═══════════════════════════════════════════════════ */
 /*  DARK MODE OVERRIDES — applied when html.dark       */
 /* ═══════════════════════════════════════════════════ */
 :root.dark {
-  --color-brand: #3B82F6;
-  --color-brand-hover: #60A5FA;
-  --color-brand-light: #1E3A8A;
+  --color-brand: #dae2fd;
+  --color-brand-hover: #bec6e0;
+  --color-brand-light: #282f44;
 
-  --color-background: #0F172A;
-  --color-surface: #1E293B;
-  --color-surface-alt: #0F172A;
-  --color-surface-2: #334155;
-  --color-border: #334155;
+  --color-background: #0b1c30;
+  --color-surface: #213145;
+  --color-surface-alt: #131b2e;
+  --color-surface-2: #3f465c;
+  --color-border: transparent;
 
-  --color-foreground: #F8FAFC;
-  --color-muted-foreground: #94A3B8;
-  --color-disabled-foreground: #475569;
+  --color-foreground: #f8f9ff;
+  --color-muted-foreground: #bec6e0;
+  --color-disabled-foreground: #767683;
 
-  --color-success: #22C55E;
-  --color-success-light: #14532D;
+  --color-success: #6ffbbe;
+  --color-success-light: #005236;
 
-  --color-danger: #EF4444;
-  --color-danger-light: #7F1D1D;
+  --color-danger: #ffdad7;
+  --color-danger-light: #930013;
 
-  --color-warning: #F59E0B;
-  --color-warning-light: #78350F;
+  --color-warning: #ffb3ad;
+  --color-warning-light: #67000a;
 }
 
 *,
@@ -83,7 +93,7 @@ html {
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -92,7 +102,7 @@ body {
 /*  TYPOGRAPHY                                         */
 /* ═══════════════════════════════════════════════════ */
 .font-display {
-  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Manrope', 'Inter', sans-serif;
 }
 
 /* ═══════════════════════════════════════════════════ */

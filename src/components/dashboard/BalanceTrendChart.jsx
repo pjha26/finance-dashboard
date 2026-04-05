@@ -8,15 +8,15 @@ const data = [
 ];
 
 export const BalanceTrendChart = () => (
-    <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6" style={{ height: '420px' }}>
-        <h3 className="text-lg font-black text-gray-900 mb-4">Balance Trend (This Month)</h3>
+    <div className="bg-surface rounded-xl shadow-[0_4px_24px_-4px_rgba(11,28,48,0.02)] p-6" style={{ height: '420px' }}>
+        <h3 className="text-xl font-bold font-display text-foreground mb-4">Balance Trend (This Month)</h3>
         <div style={{ height: '320px' }}>
             <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={data} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
                     <defs>
                         <linearGradient id="gradBalance" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#2563EB" stopOpacity={0.15} />
-                            <stop offset="95%" stopColor="#2563EB" stopOpacity={0} />
+                            <stop offset="5%" stopColor="#131b2e" stopOpacity={0.15} />
+                            <stop offset="95%" stopColor="#131b2e" stopOpacity={0} />
                         </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
@@ -27,7 +27,7 @@ export const BalanceTrendChart = () => (
                         itemStyle={{ color: '#111' }}
                         formatter={(v) => [`$${v.toLocaleString()}`, 'Balance']}
                     />
-                    <Area type="monotone" dataKey="balance" stroke="#2563EB" strokeWidth={3} fill="url(#gradBalance)" />
+                    <Area type="monotone" dataKey="balance" stroke="#131b2e" strokeWidth={3} fill="url(#gradBalance)" />
                 </AreaChart>
             </ResponsiveContainer>
         </div>

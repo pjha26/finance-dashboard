@@ -35,19 +35,19 @@ export const InsightsSection = () => {
 
     return (
         <section>
-            <h2 className="text-lg font-black text-gray-900 mb-4">AI Insights</h2>
+            <h2 className="text-xl font-bold font-display text-foreground mb-4">AI Insights</h2>
             {insights.length === 0 ? (
-                <p className="text-gray-400 text-sm">Add transactions to generate insights.</p>
+                <p className="text-muted-foreground text-sm">Add transactions to generate insights.</p>
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {insights.map((ins, i) => (
-                        <div key={i} className="flex gap-4 p-5 rounded-2xl bg-white border border-gray-200 hover:border-brand/30 hover:shadow-md transition-all">
+                        <div key={i} className="flex gap-4 p-5 rounded-xl bg-surface shadow-[0_4px_24px_-4px_rgba(11,28,48,0.02)] hover:shadow-[0_8px_32px_-4px_rgba(11,28,48,0.06)] transition-all">
                             <div className={`p-3 rounded-xl h-fit shrink-0 ${ins.color}`}>
                                 <ins.icon size={20} />
                             </div>
                             <div>
-                                <p className="font-black text-gray-900">{ins.title}</p>
-                                <p className="text-sm text-gray-500 mt-1.5 leading-relaxed">{ins.desc}</p>
+                                <p className="font-bold font-display text-foreground text-lg">{ins.title}</p>
+                                <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{ins.desc}</p>
                             </div>
                         </div>
                     ))}
