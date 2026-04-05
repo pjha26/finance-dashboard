@@ -3,16 +3,20 @@ import { createContext, useContext, useState, useEffect } from 'react';
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-    const [theme, setTheme] = useState('dark');
-    const [role, setRole] = useState('admin'); // 'admin' or 'viewer'
+    // Persist theme in localStorage, default to 'light'
+    const [theme, setTheme] = useState(() => {
+        return localStorage.getItem('findash-theme') || 'light';
+    });
+    const [role, setRole] = useState('admin');
 
     useEffect(() => {
-        // Basic theme toggle
+        const root = document.documentElement;
         if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
+            root.classList.add('dark');
         } else {
-            document.documentElement.classList.remove('dark');
+            root.classList.remove('dark');
         }
+        localStorage.setItem('findash-theme', theme);
     }, [theme]);
 
     const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');

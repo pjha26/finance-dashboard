@@ -7,63 +7,52 @@ export const InsightsSection = () => {
 
     const insights = useMemo(() => {
         if (transactions.length === 0) return [];
+        const results = [];
 
-        let res = [];
         const expenses = transactions.filter(t => t.type === 'expense');
-
         if (expenses.length > 0) {
-            const categories = expenses.reduce((acc, t) => {
+            const cats = expenses.reduce((acc, t) => {
                 acc[t.category] = (acc[t.category] || 0) + Number(t.amount);
                 return acc;
             }, {});
-            const topCategory = Object.entries(categories).sort((a, b) => b[1] - a[1])[0];
-            res.push({
-                title: "Top Expense Category",
-                desc: `You spent the most on ${topCategory[0]} ($${topCategory[1].toFixed(0)}). Consider setting a budget here.`,
+            const top = Object.entries(cats).sort((a, b) => b[1] - a[1])[0];
+            results.push({
                 icon: AlertCircle,
-                color: "text-rose-500 bg-rose-500/10"
+                color: 'text-rose-600 bg-rose-50',
+                title: 'Top Expense Category',
+                desc: `You spent the most on ${top[0]} ($${top[1].toFixed(0)}). Consider reviewing this budget.`,
             });
         }
 
-        if (summary.balance > 0) {
-            res.push({
-                title: "Positive Cashflow",
-                desc: `Great job! Your income is outpacing your expenses by $${summary.balance.toFixed(0)}.`,
-                icon: TrendingUp,
-                color: "text-emerald-500 bg-emerald-500/10"
-            });
-        } else {
-            res.push({
-                title: "Negative Cashflow",
-                desc: `You are spending more than you earn. Try to reduce discretionary expenses.`,
-                icon: Compass,
-                color: "text-amber-500 bg-amber-500/10"
-            });
-        }
+        results.push(
+            summary.balance >= 0
+                ? { icon: TrendingUp, color: 'text-emerald-600 bg-emerald-50', title: 'Positive Cashflow', desc: `Great! Your income exceeds expenses by $${summary.balance.toFixed(0)} this month.` }
+                : { icon: Compass, color: 'text-amber-600 bg-amber-50', title: 'Expenses Exceed Income', desc: `You're spending $${Math.abs(summary.balance).toFixed(0)} more than you earn. Try cutting back.` }
+        );
 
-        return res;
+        return results;
     }, [transactions, summary]);
 
     return (
-        <div className="bg-card w-full mt-6 shadow-none">
-            <h3 className="text-lg font-semibold mb-4 text-foreground">AI Insights</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {insights.length === 0 ? (
-                    <p className="text-muted-foreground text-sm col-span-2">Add more transactions to generate insights.</p>
-                ) : (
-                    insights.map((insight, idx) => (
-                        <div key={idx} className="flex gap-4 p-5 rounded-2xl bg-secondary/10 border border-border shadow-sm hover:bg-secondary/20 transition-colors">
-                            <div className={`p-3 rounded-xl h-fit ${insight.color}`}>
-                                <insight.icon size={22} />
+        <section>
+            <h2 className="text-lg font-black text-gray-900 mb-4">AI Insights</h2>
+            {insights.length === 0 ? (
+                <p className="text-gray-400 text-sm">Add transactions to generate insights.</p>
+            ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {insights.map((ins, i) => (
+                        <div key={i} className="flex gap-4 p-5 rounded-2xl bg-white border border-gray-200 hover:border-brand/30 hover:shadow-md transition-all">
+                            <div className={`p-3 rounded-xl h-fit shrink-0 ${ins.color}`}>
+                                <ins.icon size={20} />
                             </div>
                             <div>
-                                <h4 className="font-semibold text-foreground">{insight.title}</h4>
-                                <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{insight.desc}</p>
+                                <p className="font-black text-gray-900">{ins.title}</p>
+                                <p className="text-sm text-gray-500 mt-1.5 leading-relaxed">{ins.desc}</p>
                             </div>
                         </div>
-                    ))
-                )}
-            </div>
-        </div>
+                    ))}
+                </div>
+            )}
+        </section>
     );
 };
