@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sovereign Vault | Analytics Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72@display&amp;family=Manrope:wght@200..800&amp;family=Space_Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#131313",
+                    "secondary-fixed-dim": "#b9c8de",
+                    "secondary": "#b9c8de",
+                    "background": "#131313",
+                    "on-primary-fixed-variant": "#5516be",
+                    "on-primary-fixed": "#23005c",
+                    "on-error": "#690005",
+                    "surface": "#131313",
+                    "on-tertiary-fixed": "#002113",
+                    "surface-container": "#201f1f",
+                    "surface-variant": "#353534",
+                    "on-surface-variant": "#cbc3d7",
+                    "on-secondary-fixed": "#0d1c2d",
+                    "tertiary": "#4edea3",
+                    "on-secondary-fixed-variant": "#39485a",
+                    "tertiary-fixed": "#6ffbbe",
+                    "primary-fixed-dim": "#d0bcff",
+                    "inverse-on-surface": "#313030",
+                    "on-tertiary-container": "#00311f",
+                    "outline": "#958ea0",
+                    "surface-tint": "#d0bcff",
+                    "surface-container-highest": "#353534",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "surface-container-high": "#2a2a2a",
+                    "outline-variant": "#494454",
+                    "primary-container": "#a078ff",
+                    "inverse-primary": "#6d3bd7",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "error": "#ffb4ab",
+                    "on-secondary-container": "#a7b6cc",
+                    "tertiary-container": "#00a572",
+                    "on-surface": "#e5e2e1",
+                    "surface-container-low": "#1c1b1b",
+                    "on-primary": "#3c0091",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-secondary": "#233143",
+                    "surface-bright": "#393939",
+                    "on-primary-container": "#340080",
+                    "inverse-surface": "#e5e2e1",
+                    "secondary-fixed": "#d4e4fa",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary": "#003824",
+                    "secondary-container": "#39485a",
+                    "error-container": "#93000a",
+                    "on-background": "#e5e2e1",
+                    "primary-fixed": "#e9ddff",
+                    "primary": "#d0bcff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Space_Grotesk", "monospace"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(19, 19, 19, 0.7);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(73, 68, 84, 0.15);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .sankey-node { height: 40px; width: 4px; background: #d0bcff; }
+        .sankey-link { background: linear-gradient(90deg, rgba(208, 188, 255, 0.2) 0%, rgba(78, 222, 163, 0.1) 100%); }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- Top Navigation -->
+<nav class="flex justify-between items-center px-8 h-20 w-full fixed top-0 z-50 bg-[#131313]/70 backdrop-blur-3xl border-b border-[#494454]/15">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-semibold text-[#d0bcff] font-headline tracking-tight">Sovereign Vault</span>
+<div class="hidden md:flex items-center gap-8 font-label text-xs uppercase tracking-widest">
+<a class="text-[#d0bcff] border-b-2 border-[#d0bcff] pb-1 transition-all" href="#">Dashboard</a>
+<a class="text-[#b9c8de] hover:text-[#d0bcff] transition-colors" href="#">Assets</a>
+<a class="text-[#b9c8de] hover:text-[#d0bcff] transition-colors" href="#">History</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative flex items-center bg-surface-container-low px-4 py-2 border border-outline-variant/20">
+<span class="material-symbols-outlined text-outline text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs font-label uppercase tracking-widest w-48 placeholder:text-outline/50" placeholder="QUERY VAULT..." type="text"/>
+</div>
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-secondary hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined text-secondary hover:text-primary transition-colors">settings</button>
+</div>
+<div class="w-10 h-10 bg-surface-container-highest border border-primary/20 overflow-hidden">
+<img alt="Private Client Avatar" data-alt="minimalist abstract avatar of a professional executive in dark tones with subtle violet highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx7sA1N2XJ6WqfKiOOEsDay1LjZ-Bm79lzX4KeDsF6rJPiWT6jR-YOyfhiwcrhstbmNVEM0st_A3i7HWrrO4o91lGiVXiSwBXEzf2kBsFGnourp8v_g-OFmz9UKRkVqvMbI-5Lk1dxRF6F2QXT1PPRT2KWo_nXjFbIzAvs8V61iALH2Kh-k_7jCswj85AD_42_kYrQxK_66weQXL1mlTyeEJJqRZCPWyFZYPt2C5R7KFSBRxmd8U9CoGMAvB17m2AiSZViiiRTB_1k"/>
+</div>
+</div>
+</nav>
+<!-- Side Navigation -->
+<aside class="fixed left-0 top-20 h-[calc(100vh-80px)] w-64 flex flex-col py-6 z-40 bg-[#0e0e0e]/80 backdrop-blur-2xl border-r border-[#494454]/15 hidden lg:flex">
+<div class="px-6 mb-8">
+<h3 class="font-label text-[10px] uppercase tracking-[0.3em] text-outline mb-1">Client Services</h3>
+<p class="font-headline italic text-lg text-secondary">Private Terminal</p>
+</div>
+<nav class="flex flex-col flex-1">
+<a class="flex items-center gap-4 px-6 py-4 text-[#b9c8de] hover:bg-[#131313] transition-all font-label text-xs uppercase tracking-widest group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">local_shipping</span>
+<span>Elite Tier</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 bg-[#201f1f] text-[#d0bcff] border-l-4 border-[#d0bcff] font-label text-xs uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span>Reserve</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-[#b9c8de] hover:bg-[#131313] transition-all font-label text-xs uppercase tracking-widest group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">support_agent</span>
+<span>Concierge</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-[#b9c8de] hover:bg-[#131313] transition-all font-label text-xs uppercase tracking-widest group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">lock</span>
+<span>Vault Access</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full py-4 border border-primary text-primary font-label text-[10px] uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all duration-300">
+                Contact Advisor
+            </button>
+<div class="mt-8 flex gap-4 text-outline font-label text-[10px] uppercase tracking-widest">
+<a class="hover:text-secondary flex items-center gap-1" href="#"><span class="material-symbols-outlined text-xs">shield</span> Security</a>
+<a class="hover:text-secondary flex items-center gap-1" href="#"><span class="material-symbols-outlined text-xs">gavel</span> Legal</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:pl-64 pt-20 min-h-screen">
+<div class="p-8 max-w-[1600px] mx-auto">
+<!-- Executive Brief Header -->
+<header class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-outline-variant/10 pb-8">
+<div>
+<h1 class="font-headline text-5xl md:text-6xl text-on-surface mb-2 tracking-tight">Executive Brief</h1>
+<p class="font-body text-secondary max-w-2xl leading-relaxed">Structural analysis of fiscal velocity and liquidity exposure. Your current vault status indicates a <span class="text-tertiary">0.84% optimized growth</span> vector across all nodes.</p>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container p-4 min-w-[180px]">
+<span class="font-label text-[10px] text-outline uppercase tracking-widest block mb-1">Net Exposure</span>
+<span class="font-headline text-2xl text-on-surface">$12,482,000.00</span>
+</div>
+<div class="bg-surface-container p-4 min-w-[180px]">
+<span class="font-label text-[10px] text-outline uppercase tracking-widest block mb-1">Liquidity Ratio</span>
+<span class="font-headline text-2xl text-tertiary">4.2 : 1</span>
+</div>
+</div>
+</header>
+<!-- Top Grid: Structural Expense & Heatmap -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+<!-- Structural Expense Flow (Sankey-style) -->
+<div class="lg:col-span-2 glass-panel p-8 relative overflow-hidden">
+<div class="flex justify-between items-center mb-10">
+<h2 class="font-headline text-2xl">Structural Expense Flow</h2>
+<span class="font-label text-[10px] text-primary uppercase tracking-[0.2em]">Real-time Routing</span>
+</div>
+<div class="relative h-64 flex justify-between items-center">
+<!-- Source Nodes -->
+<div class="flex flex-col justify-between h-full z-10">
+<div class="text-right">
+<span class="font-label text-[10px] text-outline block">NODE_ALPHA</span>
+<span class="font-body text-sm">$4.2M</span>
+<div class="sankey-node mt-1 ml-auto"></div>
+</div>
+<div class="text-right">
+<span class="font-label text-[10px] text-outline block">NODE_BETA</span>
+<span class="font-body text-sm">$1.8M</span>
+<div class="sankey-node mt-1 ml-auto"></div>
+</div>
+<div class="text-right">
+<span class="font-label text-[10px] text-outline block">RESERVE_C</span>
+<span class="font-body text-sm">$6.4M</span>
+<div class="sankey-node mt-1 ml-auto"></div>
+</div>
+</div>
+<!-- Links (Abstracted) -->
+<div class="absolute inset-x-12 inset-y-0 overflow-hidden pointer-events-none opacity-40">
+<div class="sankey-link absolute top-6 left-0 right-0 h-8 skew-y-6"></div>
+<div class="sankey-link absolute top-24 left-0 right-0 h-12 -skew-y-3"></div>
+<div class="sankey-link absolute bottom-12 left-0 right-0 h-10 skew-y-2"></div>
+<div class="sankey-link absolute bottom-4 left-0 right-0 h-4 -skew-y-6"></div>
+</div>
+<!-- Category Destination Nodes -->
+<div class="flex flex-col justify-between h-full z-10">
+<div>
+<div class="sankey-node mb-1 bg-tertiary"></div>
+<span class="font-label text-[10px] text-outline block uppercase">Operations</span>
+<span class="font-body text-sm">$3.1M</span>
+</div>
+<div>
+<div class="sankey-node mb-1 bg-tertiary"></div>
+<span class="font-label text-[10px] text-outline block uppercase">Acquisitions</span>
+<span class="font-body text-sm">$5.9M</span>
+</div>
+<div>
+<div class="sankey-node mb-1 bg-tertiary"></div>
+<span class="font-label text-[10px] text-outline block uppercase">Yield_Lock</span>
+<span class="font-body text-sm">$3.4M</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Node Performance Heatmap -->
+<div class="glass-panel p-8">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-headline text-2xl">Node Heatmap</h2>
+<span class="material-symbols-outlined text-outline">grid_view</span>
+</div>
+<div class="grid grid-cols-4 gap-2 aspect-square">
+<!-- Simulated Heatmap Grid -->
+<div class="bg-tertiary/20 border border-tertiary/40"></div>
+<div class="bg-tertiary/40 border border-tertiary/60"></div>
+<div class="bg-tertiary/10 border border-tertiary/20"></div>
+<div class="bg-tertiary/60 border border-tertiary/80"></div>
+<div class="bg-primary/10 border border-primary/20"></div>
+<div class="bg-tertiary/30 border border-tertiary/50"></div>
+<div class="bg-tertiary/50 border border-tertiary/70"></div>
+<div class="bg-tertiary/5 border border-tertiary/10"></div>
+<div class="bg-tertiary/70 border border-tertiary/90"></div>
+<div class="bg-tertiary/20 border border-tertiary/40"></div>
+<div class="bg-primary/20 border border-primary/40"></div>
+<div class="bg-tertiary/40 border border-tertiary/60"></div>
+<div class="bg-tertiary/15 border border-tertiary/25"></div>
+<div class="bg-tertiary/60 border border-tertiary/80"></div>
+<div class="bg-tertiary/40 border border-tertiary/60"></div>
+<div class="bg-tertiary/90 border border-tertiary/100"></div>
+</div>
+<div class="mt-6 flex justify-between font-label text-[9px] uppercase tracking-widest text-outline">
+<span>Low Velocity</span>
+<span>Peak Intensity</span>
+</div>
+</div>
+</div>
+<!-- Middle Row: Interactive Scatter Plot & Vault Feed -->
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-8">
+<!-- Liquidity vs Exposure Scatter Plot -->
+<div class="lg:col-span-3 glass-panel p-8 h-[500px] flex flex-col">
+<div class="flex justify-between items-center mb-12">
+<div>
+<h2 class="font-headline text-3xl">Liquidity vs. Exposure</h2>
+<p class="font-label text-[10px] text-outline uppercase tracking-widest mt-1">Cross-Asset Risk Distribution</p>
+</div>
+<div class="flex gap-4">
+<span class="flex items-center gap-2 font-label text-[10px] text-on-surface uppercase"><div class="w-2 h-2 bg-primary"></div> Primary Holdings</span>
+<span class="flex items-center gap-2 font-label text-[10px] text-on-surface uppercase"><div class="w-2 h-2 bg-tertiary"></div> Hedge Vectors</span>
+</div>
+</div>
+<div class="flex-1 relative border-l border-b border-outline-variant/30 ml-8 mb-8">
+<!-- Y-Axis Labels -->
+<div class="absolute -left-10 top-0 h-full flex flex-col justify-between font-label text-[10px] text-outline py-2">
+<span>100%</span>
+<span>75%</span>
+<span>50%</span>
+<span>25%</span>
+<span>0%</span>
+</div>
+<!-- X-Axis Labels -->
+<div class="absolute -bottom-8 left-0 w-full flex justify-between font-label text-[10px] text-outline px-2">
+<span>ALPHA</span>
+<span>BETA</span>
+<span>GAMMA</span>
+<span>DELTA</span>
+<span>EPSILON</span>
+</div>
+<!-- Simulated Data Points -->
+<div class="absolute top-1/4 left-1/4 w-4 h-4 bg-primary ring-8 ring-primary/10 shadow-[0_0_20px_rgba(208,188,255,0.4)]"></div>
+<div class="absolute top-1/2 left-2/3 w-3 h-3 bg-tertiary ring-4 ring-tertiary/10"></div>
+<div class="absolute top-2/3 left-1/3 w-6 h-6 bg-primary ring-12 ring-primary/5 opacity-80"></div>
+<div class="absolute top-1/5 left-1/2 w-4 h-4 bg-tertiary/60"></div>
+<div class="absolute bottom-1/4 right-1/4 w-3 h-3 border border-primary bg-primary/20"></div>
+<div class="absolute top-1/3 right-1/10 w-2 h-2 bg-on-surface"></div>
+<!-- Connecting Grid Lines -->
+<div class="absolute inset-0 grid grid-cols-4 grid-rows-4 pointer-events-none">
+<div class="border-r border-t border-outline-variant/5"></div>
+<div class="border-r border-t border-outline-variant/5"></div>
+<div class="border-r border-t border-outline-variant/5"></div>
+<div class="border-r border-t border-outline-variant/5"></div>
+<div class="border-r border-t border-outline-variant/5"></div>
+<div class="border-r border-t border-outline-variant/5"></div>
+<div class="border-r border-t border-outline-variant/5"></div>
+<div class="border-r border-t border-outline-variant/5"></div>
+</div>
+</div>
+</div>
+<!-- Vault Verification Feed -->
+<div class="glass-panel p-8 flex flex-col">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary" data-weight="fill">shield_person</span>
+<h2 class="font-headline text-2xl">Vault Feed</h2>
+</div>
+<div class="space-y-6 overflow-y-auto pr-2 custom-scrollbar">
+<div class="border-l border-primary/40 pl-4 py-1">
+<span class="font-label text-[9px] text-outline uppercase tracking-widest block">14:02 UTC // AUTH_SUCCESS</span>
+<p class="font-body text-xs mt-1 text-on-surface">Client Terminal accessed via encrypted node [82.1.XX]</p>
+</div>
+<div class="border-l border-tertiary/40 pl-4 py-1">
+<span class="font-label text-[9px] text-outline uppercase tracking-widest block">13:45 UTC // TX_VERIFIED</span>
+<p class="font-body text-xs mt-1 text-on-surface">Acquisition of 'Asset_Group_IV' completed. +1.2M USD.</p>
+</div>
+<div class="border-l border-outline/40 pl-4 py-1">
+<span class="font-label text-[9px] text-outline uppercase tracking-widest block">12:10 UTC // YIELD_REBALANCE</span>
+<p class="font-body text-xs mt-1 text-on-surface">Reserve C automatically rebalanced for high-volatility window.</p>
+</div>
+<div class="border-l border-primary/40 pl-4 py-1">
+<span class="font-label text-[9px] text-outline uppercase tracking-widest block">09:30 UTC // SECURITY_HEARTBEAT</span>
+<p class="font-body text-xs mt-1 text-on-surface">Global surveillance protocols synchronized. Integrity 100%.</p>
+</div>
+</div>
+<button class="mt-auto w-full py-3 bg-surface-container-highest font-label text-[10px] uppercase tracking-widest border border-outline-variant/20 hover:border-primary/50 transition-all">
+                        Full Audit Log
+                    </button>
+</div>
+</div>
+<!-- Bottom Row: Spending Velocity -->
+<div class="glass-panel p-8 overflow-hidden">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h2 class="font-headline text-3xl">Spending Velocity</h2>
+<p class="font-label text-[10px] text-outline uppercase tracking-widest mt-1">Rolling 30-Day Outflow Momentum</p>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-4xl text-on-surface">1.24x</span>
+<span class="font-label text-xs text-tertiary uppercase">↑ 12% vs LY</span>
+</div>
+</div>
+<div class="h-64 w-full relative">
+<!-- SVG Area Chart -->
+<svg class="w-full h-full opacity-80" preserveaspectratio="none" viewbox="0 0 1000 200">
+<defs>
+<lineargradient id="gradient-area" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#d0bcff" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#d0bcff" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,200 L0,150 C100,120 200,180 300,140 C400,100 500,160 600,130 C700,100 800,80 900,110 L1000,90 L1000,200 Z" fill="url(#gradient-area)"></path>
+<path d="M0,150 C100,120 200,180 300,140 C400,100 500,160 600,130 C700,100 800,80 900,110 L1000,90" fill="none" stroke="#d0bcff" stroke-width="2"></path>
+<!-- Threshold Line -->
+<line opacity="0.5" stroke="#4edea3" stroke-dasharray="10,10" stroke-width="1" x1="0" x2="1000" y1="120" y2="120"></line>
+</svg>
+<div class="absolute bottom-0 w-full flex justify-between px-4 font-label text-[10px] text-outline mt-4">
+<span>MAY 01</span>
+<span>MAY 07</span>
+<span>MAY 14</span>
+<span>MAY 21</span>
+<span>MAY 31</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual Verification Overlay (Fixed Floating) -->
+<div class="fixed bottom-8 right-8 z-50">
+<div class="bg-surface-container-highest border border-primary/30 p-1 flex items-center gap-3 pr-6 shadow-2xl">
+<div class="bg-primary p-3">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div>
+<p class="font-label text-[10px] uppercase tracking-[0.2em] text-primary">System Integrity</p>
+<p class="font-body text-xs text-on-surface font-semibold uppercase">Verified_Session_Active</p>
+</div>
+</div>
+</div>
+</body></html>

@@ -18,7 +18,7 @@ export const InsightsSection = () => {
             const top = Object.entries(cats).sort((a, b) => b[1] - a[1])[0];
             results.push({
                 icon: AlertCircle,
-                color: 'text-rose-600 bg-rose-50',
+                color: 'text-danger bg-danger-light',
                 title: 'Top Expense Category',
                 desc: `You spent the most on ${top[0]} ($${top[1].toFixed(0)}). Consider reviewing this budget.`,
             });
@@ -26,8 +26,8 @@ export const InsightsSection = () => {
 
         results.push(
             summary.balance >= 0
-                ? { icon: TrendingUp, color: 'text-emerald-600 bg-emerald-50', title: 'Positive Cashflow', desc: `Great! Your income exceeds expenses by $${summary.balance.toFixed(0)} this month.` }
-                : { icon: Compass, color: 'text-amber-600 bg-amber-50', title: 'Expenses Exceed Income', desc: `You're spending $${Math.abs(summary.balance).toFixed(0)} more than you earn. Try cutting back.` }
+                ? { icon: TrendingUp, color: 'text-success bg-success-light', title: 'Positive Cashflow', desc: `Great! Your income exceeds expenses by $${summary.balance.toFixed(0)} this month.` }
+                : { icon: Compass, color: 'text-warning bg-warning-light', title: 'Expenses Exceed Income', desc: `You're spending $${Math.abs(summary.balance).toFixed(0)} more than you earn. Try cutting back.` }
         );
 
         return results;
@@ -35,19 +35,19 @@ export const InsightsSection = () => {
 
     return (
         <section>
-            <h2 className="text-lg font-black text-gray-900 mb-4">AI Insights</h2>
+            <h2 className="text-xl font-bold font-display text-foreground mb-4">AI Insights</h2>
             {insights.length === 0 ? (
-                <p className="text-gray-400 text-sm">Add transactions to generate insights.</p>
+                <p className="text-muted-foreground text-sm">Add transactions to generate insights.</p>
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {insights.map((ins, i) => (
-                        <div key={i} className="flex gap-4 p-5 rounded-2xl bg-white border border-gray-200 hover:border-brand/30 hover:shadow-md transition-all">
+                        <div key={i} className="flex gap-4 p-5 rounded-xl bg-surface shadow-[0_4px_24px_-4px_rgba(11,28,48,0.02)] hover:shadow-[0_8px_32px_-4px_rgba(11,28,48,0.06)] transition-all">
                             <div className={`p-3 rounded-xl h-fit shrink-0 ${ins.color}`}>
                                 <ins.icon size={20} />
                             </div>
                             <div>
-                                <p className="font-black text-gray-900">{ins.title}</p>
-                                <p className="text-sm text-gray-500 mt-1.5 leading-relaxed">{ins.desc}</p>
+                                <p className="font-bold font-display text-foreground text-lg">{ins.title}</p>
+                                <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{ins.desc}</p>
                             </div>
                         </div>
                     ))}

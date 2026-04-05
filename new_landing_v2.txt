@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Sovereign Ledger | Institutional Grade Finance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#e5e2e3",
+                        "tertiary-container": "#ca801e",
+                        "on-secondary-container": "#c3adf7",
+                        "tertiary-fixed-dim": "#ffb869",
+                        "error": "#ffb4ab",
+                        "primary-container": "#a078ff",
+                        "inverse-primary": "#6d3bd7",
+                        "surface-container-high": "#2a2a2b",
+                        "outline-variant": "#494454",
+                        "surface-container-highest": "#353436",
+                        "on-tertiary-fixed-variant": "#673d00",
+                        "surface-tint": "#d0bcff",
+                        "outline": "#958ea0",
+                        "primary": "#d0bcff",
+                        "primary-fixed": "#e9ddff",
+                        "on-background": "#e5e2e3",
+                        "secondary-container": "#513e7f",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#482900",
+                        "secondary-fixed": "#e9ddff",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#3a393a",
+                        "on-primary-container": "#340080",
+                        "inverse-surface": "#e5e2e3",
+                        "surface-container-lowest": "#0e0e0f",
+                        "on-secondary": "#372464",
+                        "surface-container-low": "#1c1b1c",
+                        "on-primary": "#3c0091",
+                        "on-tertiary-fixed": "#2c1700",
+                        "surface": "#131314",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#23005c",
+                        "on-primary-fixed-variant": "#5516be",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "secondary": "#d0bcff",
+                        "background": "#131314",
+                        "surface-dim": "#131314",
+                        "on-tertiary-container": "#3f2300",
+                        "tertiary-fixed": "#ffdcbb",
+                        "primary-fixed-dim": "#d0bcff",
+                        "inverse-on-surface": "#313031",
+                        "on-secondary-fixed-variant": "#4e3b7c",
+                        "tertiary": "#ffb869",
+                        "surface-variant": "#353436",
+                        "on-surface-variant": "#cbc3d7",
+                        "on-secondary-fixed": "#220b4e",
+                        "surface-container": "#201f20"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0rem",
+                        "lg": "0rem",
+                        "xl": "0rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #131314; color: #e5e2e3; font-family: 'Manrope', sans-serif; }
+        .font-serif { font-family: 'Newsreader', serif; }
+        .glass-panel { backdrop-filter: blur(20px); }
+        .ghost-border { outline: 1px solid rgba(73, 68, 84, 0.15); }
+        .violet-gradient { background: linear-gradient(45deg, #d0bcff, #a078ff); }
+    </script>
+</head>
+<body class="selection:bg-primary/30">
+
+    <!-- TopNavBar -->
+    <header class="fixed top-0 w-full z-50 bg-[#131314]/80 backdrop-blur-xl border-b border-[#494454]/15">
+        <nav class="flex justify-between items-center w-full px-8 h-20 max-w-[1440px] mx-auto">
+            <div class="text-xl font-serif font-bold text-[#e5e2e3] tracking-tight">The Sovereign Ledger</div>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#" class="text-[#e5e2e3]/60 font-medium hover:text-[#e5e2e3] transition-colors duration-300">Dashboard</a>
+                <a href="#" class="text-[#e5e2e3]/60 font-medium hover:text-[#e5e2e3] transition-colors duration-300">Transactions</a>
+                <a href="#" class="text-[#e5e2e3]/60 font-medium hover:text-[#e5e2e3] transition-colors duration-300">Insights</a>
+                <a href="#" class="text-[#e5e2e3]/60 font-medium hover:text-[#e5e2e3] transition-colors duration-300">Security</a>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <button class="text-[#e5e2e3]/60 font-medium hover:text-[#e5e2e3] transition-colors duration-300">Login</button>
+                <button class="violet-gradient text-on-primary-fixed px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform duration-200">Open Vault</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative min-h-[921px] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+            <div class="absolute inset-0 z-0 opacity-20">
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 blur-[120px] rounded-full"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-primary-container/10 blur-[150px] rounded-full"></div>
+            </div>
+            
+            <div class="relative z-10 max-w-4xl">
+                <span class="inline-block px-4 py-1 mb-6 border border-outline-variant/20 bg-surface-container-highest/40 backdrop-blur-md text-[10px] tracking-[0.2em] uppercase font-bold text-primary">Zurich Institutional Grade</span>
+                <h1 class="font-serif text-6xl md:text-8xl font-medium tracking-tighter mb-8 leading-[0.9]">Architectural Wealth <br/> Management.</h1>
+                <p class="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto mb-12 font-body leading-relaxed">Experience a finance terminal designed for permanence. The Sovereign Ledger provides bespoke asset surveillance with cryptographic precision.</p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                    <button class="violet-gradient text-on-primary-fixed px-10 py-4 font-bold text-lg w-full md:w-auto">Start Your Ledger</button>
+                    <button class="ghost-border hover:bg-surface-variant px-10 py-4 font-bold text-lg w-full md:w-auto transition-colors">Explore the Terminal</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Preview (Asymmetric Bento) -->
+        <section class="px-8 pb-32 max-w-[1440px] mx-auto">
+            <div class="grid grid-cols-12 gap-4">
+                <!-- Large Terminal View -->
+                <div class="col-span-12 lg:col-span-8 bg-surface-container-lowest ghost-border p-1 relative overflow-hidden group">
+                    <div class="bg-surface-container-high/60 backdrop-blur-xl p-8 h-full">
+                        <div class="flex justify-between items-end mb-12">
+                            <div>
+                                <h3 class="font-serif text-3xl mb-2">Sovereign Dashboard Overview</h3>
+                                <p class="text-on-surface-variant text-sm font-label uppercase tracking-widest">Global Asset Distribution</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-primary text-4xl font-serif">$2,840,192.42</span>
+                                <div class="flex items-center justify-end gap-2 text-xs text-on-surface-variant mt-2">
+                                    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                                    LIVE FEED SYNCED
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="h-64 flex items-end gap-2 mb-8">
+                            <div class="flex-1 bg-primary/20 h-[40%] hover:bg-primary/40 transition-all duration-500"></div>
+                            <div class="flex-1 bg-primary/20 h-[60%] hover:bg-primary/40 transition-all duration-500"></div>
+                            <div class="flex-1 bg-primary/20 h-[55%] hover:bg-primary/40 transition-all duration-500"></div>
+                            <div class="flex-1 bg-primary/20 h-[75%] hover:bg-primary/40 transition-all duration-500"></div>
+                            <div class="flex-1 bg-primary/20 h-[90%] hover:bg-primary/40 transition-all duration-500"></div>
+                            <div class="flex-1 bg-primary/20 h-[85%] hover:bg-primary/40 transition-all duration-500"></div>
+                            <div class="flex-1 bg-primary/20 h-[100%] hover:bg-primary/40 transition-all duration-500"></div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-8 pt-8 border-t border-outline-variant/10">
+                            <div>
+                                <span class="block text-[10px] text-outline tracking-widest uppercase mb-1">Monthly Yield</span>
+                                <span class="text-xl font-medium text-on-surface">+12.4%</span>
+                            </div>
+                            <div>
+                                <span class="block text-[10px] text-outline tracking-widest uppercase mb-1">Exposure Index</span>
+                                <span class="text-xl font-medium text-on-surface">Low Risk</span>
+                            </div>
+                            <div>
+                                <span class="block text-[10px] text-outline tracking-widest uppercase mb-1">Last Audit</span>
+                                <span class="text-xl font-medium text-on-surface">04.24.24</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transaction Ledger Side -->
+                <div class="col-span-12 lg:col-span-4 flex flex-col gap-4">
+                    <div class="flex-1 bg-surface-container-lowest ghost-border p-8">
+                        <div class="flex justify-between items-center mb-6">
+                            <h4 class="font-serif text-xl">Secure Transaction Ledger</h4>
+                            <span class="material-symbols-outlined text-outline">filter_list</span>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="flex justify-between items-center group cursor-pointer">
+                                <div>
+                                    <p class="text-sm font-bold text-on-surface">Zurich Equity Fund</p>
+                                    <p class="text-[10px] text-outline uppercase tracking-wider">Asset Purchase â?¢ 14:02</p>
+                                </div>
+                                <span class="text-primary font-medium">-$12,400.00</span>
+                            </div>
+                            <div class="flex justify-between items-center group cursor-pointer">
+                                <div>
+                                    <p class="text-sm font-bold text-on-surface">Stripe Settlement</p>
+                                    <p class="text-[10px] text-outline uppercase tracking-wider">Revenue â?¢ 09:15</p>
+                                </div>
+                                <span class="text-primary font-medium">+$45,210.50</span>
+                            </div>
+                            <div class="flex justify-between items-center group cursor-pointer">
+                                <div>
+                                    <p class="text-sm font-bold text-on-surface">London Real Estate</p>
+                                    <p class="text-[10px] text-outline uppercase tracking-wider">Dividend â?¢ Yesterday</p>
+                                </div>
+                                <span class="text-primary font-medium">+$8,900.00</span>
+                            </div>
+                        </div>
+                        <button class="mt-8 text-[10px] font-bold text-primary tracking-widest uppercase hover:underline">View All Records</button>
+                    </div>
+
+                    <div class="h-48 bg-surface-container ghost-border relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" 
+                             class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay" 
+                             alt="Abstract obsidian texture"
+                             data-alt="Dark fluid obsidian waves with subtle violet light refraction and sharp crystalline edges in a brutalist composition">
+                        <div class="relative z-10 p-8 flex flex-col justify-end h-full">
+                            <h5 class="text-xs font-bold uppercase tracking-widest mb-1">Intelligent Insights</h5>
+                            <p class="text-on-surface-variant text-sm">Monthly expenditure is down 14% compared to Q1 projections.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Matrix -->
+        <section class="bg-surface-container-lowest py-32">
+            <div class="max-w-[1440px] mx-auto px-12">
+                <div class="mb-24 flex flex-col md:flex-row items-end justify-between gap-8">
+                    <div class="max-w-xl">
+                        <h2 class="font-serif text-5xl mb-6">Absolute Control through Cryptographic Design.</h2>
+                        <p class="text-on-surface-variant font-body">Our ledger architecture is built on the principles of Swiss neutrality and sovereign data ownership.</p>
+                    </div>
+                    <div class="pb-2">
+                        <span class="material-symbols-outlined text-6xl text-outline-variant/30">shield_lock</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 divide-x divide-outline-variant/10 border-y border-outline-variant/10">
+                    <div class="p-12 hover:bg-surface-variant/30 transition-colors">
+                        <span class="material-symbols-outlined text-primary mb-6" style="font-variation-settings: 'FILL' 1;">analytics</span>
+                        <h4 class="font-serif text-2xl mb-4">Balance Trends</h4>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">Algorithmic projection of asset growth using institutional-grade data modeling.</p>
+                    </div>
+                    <div class="p-12 hover:bg-surface-variant/30 transition-colors">
+                        <span class="material-symbols-outlined text-primary mb-6" style="font-variation-settings: 'FILL' 1;">security</span>
+                        <h4 class="font-serif text-2xl mb-4">Role-Based Access</h4>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">Distinguish between Viewer and Admin modes with granular hardware-key verification.</p>
+                    </div>
+                    <div class="p-12 hover:bg-surface-variant/30 transition-colors">
+                        <span class="material-symbols-outlined text-primary mb-6" style="font-variation-settings: 'FILL' 1;">search_insights</span>
+                        <h4 class="font-serif text-2xl mb-4">Advanced Filtering</h4>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">Deep-search decades of transaction history with millisecond latency.</p>
+                    </div>
+                    <div class="p-12 hover:bg-surface-variant/30 transition-colors">
+                        <span class="material-symbols-outlined text-primary mb-6" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+                        <h4 class="font-serif text-2xl mb-4">Category Insights</h4>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">Machine-learning analysis of spending velocity and category drift patterns.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-32 px-12 text-center max-w-4xl mx-auto">
+            <h3 class="font-serif text-5xl mb-12">The vault is open. Your sovereignty awaits.</h3>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-primary/10 blur-xl"></div>
+                    <button class="relative violet-gradient text-on-primary-fixed px-12 py-5 font-bold text-xl uppercase tracking-widest">Establish Connection</button>
+                </div>
+            </div>
+            <p class="mt-8 text-[10px] text-outline tracking-[0.3em] uppercase">No cloud storage. No data harvesting. Complete Isolation.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0e0e0f] w-full py-12 border-t border-[#494454]/10">
+        <div class="flex flex-col md:flex-row justify-between items-center px-12 gap-6 w-full max-w-[1440px] mx-auto">
+            <div class="text-[#e5e2e3]/40 font-sans text-[10px] tracking-widest uppercase Manrope text-center md:text-left">
+                Â© 2024 The Sovereign Ledger. All Rights Reserved. Zurich Institutional Grade.
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="#" class="text-[#e5e2e3]/40 font-sans text-[10px] tracking-widest uppercase Manrope hover:text-[#8B5CF6] transition-opacity">Terms of Sovereignty</a>
+                <a href="#" class="text-[#e5e2e3]/40 font-sans text-[10px] tracking-widest uppercase Manrope hover:text-[#8B5CF6] transition-opacity">Privacy Protocol</a>
+                <a href="#" class="text-[#e5e2e3]/40 font-sans text-[10px] tracking-widest uppercase Manrope hover:text-[#8B5CF6] transition-opacity">Institutional Disclosure</a>
+                <a href="#" class="text-[#e5e2e3]/40 font-sans text-[10px] tracking-widest uppercase Manrope hover:text-[#8B5CF6] transition-opacity">Contact Vault</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html></style></head><body></body></html>

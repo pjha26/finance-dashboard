@@ -2,7 +2,7 @@ import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recha
 import { useFinanceContext } from '../../context/FinanceContext';
 import { useMemo } from 'react';
 
-const COLORS = ['#EE3124', '#f59e0b', '#3b82f6', '#8b5cf6', '#10b981', '#f43f5e', '#06b6d4'];
+const COLORS = ['var(--color-chart-1)', 'var(--color-chart-2)', 'var(--color-chart-3)', 'var(--color-chart-4)', 'var(--color-chart-5)', 'var(--color-chart-6)'];
 
 export const SpendingBreakdownChart = () => {
     const { transactions } = useFinanceContext();
@@ -18,18 +18,18 @@ export const SpendingBreakdownChart = () => {
 
     if (data.length === 0) {
         return (
-            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 flex flex-col" style={{ height: '420px' }}>
-                <h3 className="text-lg font-black text-gray-900 mb-4">Spending Breakdown</h3>
+            <div className="bg-surface rounded-xl shadow-[0_4px_24px_-4px_rgba(11,28,48,0.02)] p-6 flex flex-col" style={{ height: '420px' }}>
+                <h3 className="text-xl font-bold font-display text-foreground mb-4">Spending Breakdown</h3>
                 <div className="flex-1 flex items-center justify-center">
-                    <p className="text-gray-400 text-sm">No expense data available.</p>
+                    <p className="text-muted-foreground text-sm">No expense data available.</p>
                 </div>
             </div>
         );
     }
 
     return (
-        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6" style={{ height: '420px' }}>
-            <h3 className="text-lg font-black text-gray-900 mb-2">Spending Breakdown</h3>
+        <div className="bg-surface rounded-xl shadow-[0_4px_24px_-4px_rgba(11,28,48,0.02)] p-6" style={{ height: '420px' }}>
+            <h3 className="text-xl font-bold font-display text-foreground mb-2">Spending Breakdown</h3>
             <ResponsiveContainer width="100%" height={340}>
                 <PieChart>
                     <Pie data={data} cx="50%" cy="45%" innerRadius={70} outerRadius={105} paddingAngle={4} dataKey="value" strokeWidth={0}>
