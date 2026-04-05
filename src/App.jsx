@@ -9,10 +9,14 @@ import Insights from './pages/Insights';
 import Forecasts from './pages/Forecasts';
 import Network from './pages/Network';
 import Temporal from './pages/Temporal';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 import Sidebar from './components/common/Sidebar';
 import { Navbar } from './components/common/Navbar';
 import { FinanceProvider } from './context/FinanceContext';
 import { AppProvider } from './context/AppContext';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/common/ProtectedRoute';
 import { Toaster } from 'react-hot-toast';
 
 /* App-shell wrapper — wraps the dashboard and transactions pages */
@@ -31,44 +35,54 @@ const AppShell = ({ children }) => (
   </div>
 );
 
+const ProtectedAppShell = ({ children }) => (
+  <ProtectedRoute>
+    <AppShell>{children}</AppShell>
+  </ProtectedRoute>
+);
+
 function App() {
   return (
     <AppProvider>
       <FinanceProvider>
         <BrowserRouter>
-          <Routes>
-            {/* Landing page — no sidebar */}
-            <Route path="/" element={<Landing />} />
+          <AuthProvider>
+            <Routes>
+              {/* Public Routes */}
+              <Route path="/" element={<Landing />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
 
-            {/* App pages — with sidebar shell */}
-            <Route path="/dashboard" element={
-              <AppShell><Dashboard /></AppShell>
-            } />
-            <Route path="/transactions" element={
-              <AppShell><Transactions /></AppShell>
-            } />
-            <Route path="/budgets" element={
-              <AppShell><Budgets /></AppShell>
-            } />
-            <Route path="/portfolio" element={
-              <AppShell><Portfolio /></AppShell>
-            } />
-            <Route path="/accounts" element={
-              <AppShell><Accounts /></AppShell>
-            } />
-            <Route path="/insights" element={
-              <AppShell><Insights /></AppShell>
-            } />
-            <Route path="/forecasts" element={
-              <AppShell><Forecasts /></AppShell>
-            } />
-            <Route path="/network" element={
-              <AppShell><Network /></AppShell>
-            } />
-            <Route path="/temporal" element={
-              <AppShell><Temporal /></AppShell>
-            } />
-          </Routes>
+              {/* Protected App Routes */}
+              <Route path="/dashboard" element={
+                <ProtectedAppShell><Dashboard /></ProtectedAppShell>
+              } />
+              <Route path="/transactions" element={
+                <ProtectedAppShell><Transactions /></ProtectedAppShell>
+              } />
+              <Route path="/budgets" element={
+                <ProtectedAppShell><Budgets /></ProtectedAppShell>
+              } />
+              <Route path="/portfolio" element={
+                <ProtectedAppShell><Portfolio /></ProtectedAppShell>
+              } />
+              <Route path="/accounts" element={
+                <ProtectedAppShell><Accounts /></ProtectedAppShell>
+              } />
+              <Route path="/insights" element={
+                <ProtectedAppShell><Insights /></ProtectedAppShell>
+              } />
+              <Route path="/forecasts" element={
+                <ProtectedAppShell><Forecasts /></ProtectedAppShell>
+              } />
+              <Route path="/network" element={
+                <ProtectedAppShell><Network /></ProtectedAppShell>
+              } />
+              <Route path="/temporal" element={
+                <ProtectedAppShell><Temporal /></ProtectedAppShell>
+              } />
+            </Routes>
+          </AuthProvider>
         </BrowserRouter>
       </FinanceProvider>
     </AppProvider>

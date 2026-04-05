@@ -1,9 +1,11 @@
 import { NavLink, Link } from 'react-router-dom';
-import { LayoutDashboard, Receipt, User, DollarSign, Sun, Moon, Target, Briefcase, Wallet, LineChart, Activity, Network as NetworkIcon, Calendar } from 'lucide-react';
+import { LayoutDashboard, Receipt, User, DollarSign, Sun, Moon, Target, Briefcase, Wallet, LineChart, Activity, Network as NetworkIcon, Calendar, LogOut } from 'lucide-react';
 import { useAppContext } from '../../context/AppContext';
+import { useAuth } from '../../context/AuthContext';
 
 const Sidebar = () => {
     const { theme, toggleTheme, role, toggleRole } = useAppContext();
+    const { logout } = useAuth();
 
     return (
         <div className="w-64 bg-surface-alt text-foreground h-full flex-col pt-6 hidden md:flex shrink-0">
@@ -150,6 +152,14 @@ const Sidebar = () => {
                 >
                     {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
                     {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+                </button>
+
+                <button
+                    onClick={logout}
+                    className="flex items-center gap-3 w-full p-3 rounded-xl text-sm font-medium text-error/80 hover:text-error hover:bg-error/10 transition-colors"
+                >
+                    <LogOut size={18} />
+                    Disconnect Node
                 </button>
             </div>
         </div>

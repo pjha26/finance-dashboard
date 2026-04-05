@@ -26,8 +26,8 @@ const Landing = () => {
                         <Link to="/accounts" className="text-[#e5e2e3]/60 font-medium hover:text-[#e5e2e3] transition-colors duration-300">Security</Link>
                     </div>
                     <div className="flex items-center gap-6">
-                        <Link to="/dashboard" className="text-[#e5e2e3]/60 font-medium hover:text-[#e5e2e3] transition-colors duration-300">Login</Link>
-                        <Link to="/dashboard" className="violet-gradient text-[#23005c] px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform duration-200">Open Vault</Link>
+                        <Link to="/login" className="text-[#e5e2e3]/60 font-medium hover:text-[#e5e2e3] transition-colors duration-300">Login</Link>
+                        <Link to="/signup" className="violet-gradient text-[#23005c] px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform duration-200">Open Vault</Link>
                     </div>
                 </nav>
             </header>
@@ -45,8 +45,8 @@ const Landing = () => {
                         <h1 className="font-serif text-6xl md:text-8xl font-medium tracking-tighter mb-8 leading-[0.9]">Architectural Wealth <br /> Management.</h1>
                         <p className="text-lg md:text-xl text-[#cbc3d7] max-w-2xl mx-auto mb-12 font-body leading-relaxed">Experience a finance terminal designed for permanence. The Sovereign Ledger provides bespoke asset surveillance with cryptographic precision.</p>
                         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-                            <Link to="/dashboard" className="violet-gradient text-[#23005c] px-10 py-4 font-bold text-lg w-full md:w-auto">Start Your Ledger</Link>
-                            <Link to="/dashboard" className="ghost-border hover:bg-[#353436] px-10 py-4 font-bold text-lg w-full md:w-auto transition-colors">Explore the Terminal</Link>
+                            <Link to="/signup" className="violet-gradient text-[#23005c] px-10 py-4 font-bold text-lg w-full md:w-auto">Start Your Ledger</Link>
+                            <Link to="/login" className="ghost-border hover:bg-[#353436] px-10 py-4 font-bold text-lg w-full md:w-auto transition-colors">Access Terminal</Link>
                         </div>
                     </div>
                 </section>
