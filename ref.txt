@@ -1,0 +1,20 @@
+﻿cd1c06a commit: feat: added vercel.json rewrite and full Authorization flow feat: added vercel.json rewrite and full Authorization flow
+6ca277b pull: Fast-forward Merge pull request #2 from pjha26/landingpage
+e699e1d checkout: moving from landingpage to main implement dashboard layout with navigation shell, skeleton loaders, and interactive finance charts
+f289887 commit: implement core application structure with authentication, protected routing, and sidebar navigation  implement core application structure with authentication, protected routing, and sidebar navigation
+0d76f4a commit: implement Temporal, Forecasts, and Network pages with integrated routing and sidebar navigation  implement Temporal, Forecasts, and Network pages with integrated routing and sidebar navigation
+ffd08e0 commit: implement application routing, shell layout, and accounts page structure  implement application routing, shell layout, and accounts page structure
+155fd60 commit: : implement dashboard pages and components with automated comment formatting script : implement dashboard pages and components with automated comment formatting script
+12ab06e commit: implement Budgets, Portfolio, and Accounts pages with updated App routing and mobile-responsive Navbar  implement Budgets, Portfolio, and Accounts pages with updated App routing and mobile-responsive Navbar
+75aa065 commit: implement core dashboard and transaction management UI components  implement core dashboard and transaction management UI components
+bc4d60a commit: implement landing page with responsive hero section and feature overview implement landing page with responsive hero section and feature overview
+cbabe97 commit: implement landing page and core dashboard UI components implement landing page and core dashboard UI components
+3ce8fd4 commit: landing page landing page
+e699e1d checkout: moving from main to landingpage implement dashboard layout with navigation shell, skeleton loaders, and interactive finance charts
+e699e1d commit: implement dashboard layout with navigation shell, skeleton loaders, and interactive finance charts implement dashboard layout with navigation shell, skeleton loaders, and interactive finance charts
+fa18044 commit: implement FinanceContext and add Dashboard and Transactions pages with data management and filtering features. implement FinanceContext and add Dashboard and Transactions pages with data management and filtering features.
+a99150d pull: Fast-forward Merge pull request #1 from pjha26/sidebar
+260626f checkout: moving from sidebar to main : initialize finance dashboard project structure with Vite and React configuration
+d260be9 commit: features features
+260626f checkout: moving from main to sidebar : initialize finance dashboard project structure with Vite and React configuration
+260626f commit (initial): : initialize finance dashboard project structure with Vite and React configuration : initialize finance dashboard project structure with Vite and React configuration
