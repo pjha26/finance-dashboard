@@ -11,20 +11,20 @@ const Dashboard = () => {
     if (isLoading) return <DashboardSkeleton />;
 
     return (
-        <div className="h-full flex flex-col gap-8 animate-in fade-in duration-500 pb-16">
+        <div className="flex flex-col gap-8 pb-16 animate-in fade-in duration-500">
             <header>
                 <h1 className="text-3xl font-bold tracking-tight text-foreground">Overview</h1>
-                <p className="text-muted-foreground mt-1 text-sm md:text-base">Here is your financial summary for the month.</p>
+                <p className="text-muted-foreground mt-1 text-sm">Your financial summary for the month.</p>
             </header>
 
-            {/* Summary Cards */}
+            {/* Summary Cards — natural height, not flex-1 */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <SummaryCard title="Total Balance" amount={summary.balance} type="neutral" />
                 <SummaryCard title="Total Income" amount={summary.income} type="income" />
                 <SummaryCard title="Total Expenses" amount={summary.expenses} type="expense" />
             </div>
 
-            {/* Charts Array */}
+            {/* Charts — both given explicit height via className on the card itself */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-2">
                     <BalanceTrendChart />

@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Landing from './pages/Landing';
 import Dashboard from './pages/Dashboard';
 import Transactions from './pages/Transactions';
 import Sidebar from './components/common/Sidebar';
@@ -6,30 +7,40 @@ import { Navbar } from './components/common/Navbar';
 import { FinanceProvider } from './context/FinanceContext';
 import { AppProvider } from './context/AppContext';
 
+/* App-shell wrapper — wraps the dashboard and transactions pages */
+const AppShell = ({ children }) => (
+  <div className="flex h-screen overflow-hidden bg-background text-foreground antialiased">
+    <Sidebar />
+    <div className="flex flex-col flex-1 min-w-0 overflow-hidden">
+      <Navbar />
+      <div className="flex-1 overflow-y-auto">
+        <div className="p-4 md:p-8">{children}</div>
+      </div>
+    </div>
+  </div>
+);
+
 function App() {
   return (
     <AppProvider>
       <FinanceProvider>
         <BrowserRouter>
-          <div className="flex h-screen bg-background text-foreground antialiased selection:bg-primary selection:text-primary-foreground">
-            {/* Sidebar Navigation */}
-            <Sidebar />
+          <Routes>
+            {/* Landing page — no sidebar */}
+            <Route path="/" element={<Landing />} />
 
-            {/* Main Content Area */}
-            <main className="flex-1 flex flex-col h-screen overflow-hidden relative">
-              <Navbar />
-              <div className="flex-1 overflow-y-auto p-4 md:p-8">
-                <Routes>
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="/transactions" element={<Transactions />} />
-                </Routes>
-              </div>
-            </main>
-          </div>
+            {/* App pages — with sidebar shell */}
+            <Route path="/dashboard" element={
+              <AppShell><Dashboard /></AppShell>
+            } />
+            <Route path="/transactions" element={
+              <AppShell><Transactions /></AppShell>
+            } />
+          </Routes>
         </BrowserRouter>
       </FinanceProvider>
     </AppProvider>
-  )
+  );
 }
 
 export default App;
