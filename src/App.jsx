@@ -10,6 +10,7 @@ import Sidebar from './components/common/Sidebar';
 import { Navbar } from './components/common/Navbar';
 import { FinanceProvider } from './context/FinanceContext';
 import { AppProvider } from './context/AppContext';
+import { Toaster } from 'react-hot-toast';
 
 /* App-shell wrapper — wraps the dashboard and transactions pages */
 const AppShell = ({ children }) => (
@@ -18,7 +19,10 @@ const AppShell = ({ children }) => (
     <div className="flex flex-col flex-1 min-w-0 overflow-hidden">
       <Navbar />
       <div className="flex-1 overflow-y-auto">
-        <div className="p-4 md:p-8">{children}</div>
+        <div className="p-4 md:p-8">
+          <Toaster position="top-right" toastOptions={{ style: { background: '#1c1b1c', color: '#fffeff', border: '1px solid #4edea3' } }} />
+          {children}
+        </div>
       </div>
     </div>
   </div>

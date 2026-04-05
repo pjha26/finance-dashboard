@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { useAppContext } from '../context/AppContext';
 import { AdminTransactionModal } from '../components/dashboard/AdminTransactionModal';
+import toast from 'react-hot-toast';
 
 const Transactions = () => {
   const { role } = useAppContext();
   const [isAddModalOpen, setAddModalOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const m = (text) => text.toLowerCase().includes(searchQuery.toLowerCase());
 
   return (
     <div className="animate-in fade-in duration-500">
@@ -56,13 +60,19 @@ const Transactions = () => {
       <div className="flex flex-col md:flex-row gap-6 mb-12 items-center">
         <div className="relative flex-1 group w-full">
           <span className="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-secondary opacity-40 group-focus-within:text-primary transition-colors" data-icon="search">search</span>
-          <input className="w-full bg-surface-container-low border-b border-outline-variant/30 focus:border-primary focus:ring-0 px-12 py-4 font-label text-sm transition-all outline-none" placeholder="Filter by Node ID, Asset Class, or Verification Hash..." type="text" />
+          <input
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full bg-surface-container-low border-b border-outline-variant/30 focus:border-primary focus:ring-0 px-12 py-4 font-label text-sm transition-all outline-none"
+            placeholder="Filter by Node ID, Asset Class, or Verification Hash..."
+            type="text"
+          />
         </div>
         <div className="flex gap-4 w-full md:w-auto">
-          <button className="ghost-border px-6 py-4 font-label text-xs tracking-widest flex items-center gap-2 hover:bg-surface-container-high transition-colors uppercase">
+          <button onClick={() => toast('Date range filter opened', { icon: '📅' })} className="ghost-border px-6 py-4 font-label text-xs tracking-widest flex items-center gap-2 hover:bg-surface-container-high transition-colors uppercase">
             <span className="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span> Period
           </button>
-          <button className="ghost-border px-6 py-4 font-label text-xs tracking-widest flex items-center gap-2 hover:bg-surface-container-high transition-colors uppercase">
+          <button onClick={() => toast('Advanced filters opened', { icon: '🎛️' })} className="ghost-border px-6 py-4 font-label text-xs tracking-widest flex items-center gap-2 hover:bg-surface-container-high transition-colors uppercase">
             <span className="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span> Filters
           </button>
         </div>
@@ -77,69 +87,73 @@ const Transactions = () => {
           </div>
           <div className="space-y-px">
             {/* Transaction Row 1 */}
-            <div className="grid grid-cols-12 gap-4 items-center p-6 bg-surface-container hover:bg-surface-container-highest transition-all duration-300 group">
-              <div className="col-span-1 flex items-center justify-center">
-                <div className="w-10 h-10 flex items-center justify-center bg-background">
-                  <span className="material-symbols-outlined text-primary" data-icon="apartment">apartment</span>
+            {m('Capital Accretion') && (
+              <div className="grid grid-cols-12 gap-4 items-center p-6 bg-surface-container hover:bg-surface-container-highest transition-all duration-300 group">
+                <div className="col-span-1 flex items-center justify-center">
+                  <div className="w-10 h-10 flex items-center justify-center bg-background">
+                    <span className="material-symbols-outlined text-primary" data-icon="apartment">apartment</span>
+                  </div>
+                </div>
+                <div className="col-span-3">
+                  <p className="font-body text-sm font-semibold text-on-surface">Capital Accretion: Unit 402</p>
+                  <p className="font-label text-[10px] text-secondary opacity-50 uppercase tracking-tighter">TX: 0x442...EF89</p>
+                </div>
+                <div className="col-span-2">
+                  <p className="font-label text-xs text-secondary opacity-60 mb-1">NODE ID</p>
+                  <p className="font-body text-sm">RE-ALPHA-42</p>
+                </div>
+                <div className="col-span-2">
+                  <div className="flex items-center gap-2 text-tertiary">
+                    <span className="material-symbols-outlined text-sm" data-icon="verified" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
+                    <span className="font-label text-[10px] uppercase tracking-widest">Verified</span>
+                  </div>
+                  <p className="font-label text-[10px] text-secondary opacity-40 uppercase">Conf: 12,442</p>
+                </div>
+                <div className="col-span-3 text-right">
+                  <p className="font-headline text-lg">+ 14,240.00 USD</p>
+                  <p className="font-label text-[10px] text-secondary opacity-50 uppercase tracking-tighter">OCT 14, 2023 | 14:22</p>
+                </div>
+                <div className="col-span-1 flex justify-end">
+                  <button onClick={() => toast.success('Hash copied to clipboard')} className="opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="material-symbols-outlined text-secondary" data-icon="content_copy">content_copy</span>
+                  </button>
                 </div>
               </div>
-              <div className="col-span-3">
-                <p className="font-body text-sm font-semibold text-on-surface">Capital Accretion: Unit 402</p>
-                <p className="font-label text-[10px] text-secondary opacity-50 uppercase tracking-tighter">TX: 0x442...EF89</p>
-              </div>
-              <div className="col-span-2">
-                <p className="font-label text-xs text-secondary opacity-60 mb-1">NODE ID</p>
-                <p className="font-body text-sm">RE-ALPHA-42</p>
-              </div>
-              <div className="col-span-2">
-                <div className="flex items-center gap-2 text-tertiary">
-                  <span className="material-symbols-outlined text-sm" data-icon="verified" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
-                  <span className="font-label text-[10px] uppercase tracking-widest">Verified</span>
-                </div>
-                <p className="font-label text-[10px] text-secondary opacity-40 uppercase">Conf: 12,442</p>
-              </div>
-              <div className="col-span-3 text-right">
-                <p className="font-headline text-lg">+ 14,240.00 USD</p>
-                <p className="font-label text-[10px] text-secondary opacity-50 uppercase tracking-tighter">OCT 14, 2023 | 14:22</p>
-              </div>
-              <div className="col-span-1 flex justify-end">
-                <button className="opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="material-symbols-outlined text-secondary" data-icon="north_east">north_east</span>
-                </button>
-              </div>
-            </div>
+            )}
             {/* Transaction Row 2 */}
-            <div className="grid grid-cols-12 gap-4 items-center p-6 bg-surface-container-low hover:bg-surface-container-highest transition-all duration-300 group">
-              <div className="col-span-1 flex items-center justify-center">
-                <div className="w-10 h-10 flex items-center justify-center bg-background">
-                  <span className="material-symbols-outlined text-primary" data-icon="domain">domain</span>
+            {m('Governance Fee') && (
+              <div className="grid grid-cols-12 gap-4 items-center p-6 bg-surface-container-low hover:bg-surface-container-highest transition-all duration-300 group">
+                <div className="col-span-1 flex items-center justify-center">
+                  <div className="w-10 h-10 flex items-center justify-center bg-background">
+                    <span className="material-symbols-outlined text-primary" data-icon="domain">domain</span>
+                  </div>
+                </div>
+                <div className="col-span-3">
+                  <p className="font-body text-sm font-semibold text-on-surface">Governance Fee: Prop-MGT</p>
+                  <p className="font-label text-[10px] text-secondary opacity-50 uppercase tracking-tighter">TX: 0x881...AC21</p>
+                </div>
+                <div className="col-span-2">
+                  <p className="font-label text-xs text-secondary opacity-60 mb-1">NODE ID</p>
+                  <p className="font-body text-sm">RE-BETA-09</p>
+                </div>
+                <div className="col-span-2">
+                  <div className="flex items-center gap-2 text-tertiary">
+                    <span className="material-symbols-outlined text-sm" data-icon="verified" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
+                    <span className="font-label text-[10px] uppercase tracking-widest">Verified</span>
+                  </div>
+                  <p className="font-label text-[10px] text-secondary opacity-40 uppercase">Conf: 9,211</p>
+                </div>
+                <div className="col-span-3 text-right">
+                  <p className="font-headline text-lg">- 2,100.00 USD</p>
+                  <p className="font-label text-[10px] text-secondary opacity-50 uppercase tracking-tighter">OCT 12, 2023 | 09:15</p>
+                </div>
+                <div className="col-span-1 flex justify-end">
+                  <button onClick={() => toast.success('Hash copied to clipboard')} className="opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="material-symbols-outlined text-secondary" data-icon="content_copy">content_copy</span>
+                  </button>
                 </div>
               </div>
-              <div className="col-span-3">
-                <p className="font-body text-sm font-semibold text-on-surface">Governance Fee: Prop-MGT</p>
-                <p className="font-label text-[10px] text-secondary opacity-50 uppercase tracking-tighter">TX: 0x881...AC21</p>
-              </div>
-              <div className="col-span-2">
-                <p className="font-label text-xs text-secondary opacity-60 mb-1">NODE ID</p>
-                <p className="font-body text-sm">RE-BETA-09</p>
-              </div>
-              <div className="col-span-2">
-                <div className="flex items-center gap-2 text-tertiary">
-                  <span className="material-symbols-outlined text-sm" data-icon="verified" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
-                  <span className="font-label text-[10px] uppercase tracking-widest">Verified</span>
-                </div>
-                <p className="font-label text-[10px] text-secondary opacity-40 uppercase">Conf: 9,211</p>
-              </div>
-              <div className="col-span-3 text-right">
-                <p className="font-headline text-lg">- 2,100.00 USD</p>
-                <p className="font-label text-[10px] text-secondary opacity-50 uppercase tracking-tighter">OCT 12, 2023 | 09:15</p>
-              </div>
-              <div className="col-span-1 flex justify-end">
-                <button className="opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="material-symbols-outlined text-secondary" data-icon="north_east">north_east</span>
-                </button>
-              </div>
-            </div>
+            )}
           </div>
         </section>
         {/* Group 2: Equities */}
@@ -150,37 +164,39 @@ const Transactions = () => {
           </div>
           <div className="space-y-px">
             {/* Transaction Row 3 */}
-            <div className="grid grid-cols-12 gap-4 items-center p-6 bg-surface-container hover:bg-surface-container-highest transition-all duration-300 group">
-              <div className="col-span-1 flex items-center justify-center">
-                <div className="w-10 h-10 flex items-center justify-center bg-background">
-                  <span className="material-symbols-outlined text-primary" data-icon="monitoring">monitoring</span>
+            {m('Divident Liquidation') && (
+              <div className="grid grid-cols-12 gap-4 items-center p-6 bg-surface-container hover:bg-surface-container-highest transition-all duration-300 group">
+                <div className="col-span-1 flex items-center justify-center">
+                  <div className="w-10 h-10 flex items-center justify-center bg-background">
+                    <span className="material-symbols-outlined text-primary" data-icon="monitoring">monitoring</span>
+                  </div>
+                </div>
+                <div className="col-span-3">
+                  <p className="font-body text-sm font-semibold text-on-surface">Divident Liquidation: NASDAQ:GOL</p>
+                  <p className="font-label text-[10px] text-secondary opacity-50 uppercase tracking-tighter">TX: 0x112...BD23</p>
+                </div>
+                <div className="col-span-2">
+                  <p className="font-label text-xs text-secondary opacity-60 mb-1">NODE ID</p>
+                  <p className="font-body text-sm">EQ-GOLD-01</p>
+                </div>
+                <div className="col-span-2">
+                  <div className="flex items-center gap-2 text-primary">
+                    <span className="material-symbols-outlined text-sm" data-icon="pending">pending</span>
+                    <span className="font-label text-[10px] uppercase tracking-widest">Pending</span>
+                  </div>
+                  <p className="font-label text-[10px] text-secondary opacity-40 uppercase">Conf: 2</p>
+                </div>
+                <div className="col-span-3 text-right">
+                  <p className="font-headline text-lg">+ 82,900.00 USD</p>
+                  <p className="font-label text-[10px] text-secondary opacity-50 uppercase tracking-tighter">OCT 14, 2023 | 16:45</p>
+                </div>
+                <div className="col-span-1 flex justify-end">
+                  <button onClick={() => toast.success('Hash copied to clipboard')} className="opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="material-symbols-outlined text-secondary" data-icon="content_copy">content_copy</span>
+                  </button>
                 </div>
               </div>
-              <div className="col-span-3">
-                <p className="font-body text-sm font-semibold text-on-surface">Divident Liquidation: NASDAQ:GOL</p>
-                <p className="font-label text-[10px] text-secondary opacity-50 uppercase tracking-tighter">TX: 0x112...BD23</p>
-              </div>
-              <div className="col-span-2">
-                <p className="font-label text-xs text-secondary opacity-60 mb-1">NODE ID</p>
-                <p className="font-body text-sm">EQ-GOLD-01</p>
-              </div>
-              <div className="col-span-2">
-                <div className="flex items-center gap-2 text-primary">
-                  <span className="material-symbols-outlined text-sm" data-icon="pending">pending</span>
-                  <span className="font-label text-[10px] uppercase tracking-widest">Pending</span>
-                </div>
-                <p className="font-label text-[10px] text-secondary opacity-40 uppercase">Conf: 2</p>
-              </div>
-              <div className="col-span-3 text-right">
-                <p className="font-headline text-lg">+ 82,900.00 USD</p>
-                <p className="font-label text-[10px] text-secondary opacity-50 uppercase tracking-tighter">OCT 14, 2023 | 16:45</p>
-              </div>
-              <div className="col-span-1 flex justify-end">
-                <button className="opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="material-symbols-outlined text-secondary" data-icon="north_east">north_east</span>
-                </button>
-              </div>
-            </div>
+            )}
           </div>
         </section>
       </div>
