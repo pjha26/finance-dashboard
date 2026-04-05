@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#353436",
+                    "on-tertiary-fixed": "#2c1700",
+                    "surface-container-low": "#1c1b1c",
+                    "on-tertiary": "#482900",
+                    "on-primary": "#3c0091",
+                    "on-error": "#690005",
+                    "inverse-surface": "#e5e2e3",
+                    "on-background": "#e5e2e3",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "error-container": "#93000a",
+                    "surface-variant": "#353436",
+                    "primary-fixed-dim": "#d0bcff",
+                    "on-primary-fixed-variant": "#5516be",
+                    "secondary-container": "#513e7f",
+                    "surface-tint": "#d0bcff",
+                    "on-secondary-fixed-variant": "#4e3b7c",
+                    "outline-variant": "#494454",
+                    "inverse-primary": "#6d3bd7",
+                    "inverse-on-surface": "#313031",
+                    "tertiary-container": "#ca801e",
+                    "on-primary-fixed": "#23005c",
+                    "on-error-container": "#ffdad6",
+                    "on-surface": "#e5e2e3",
+                    "background": "#131314",
+                    "surface-bright": "#3a393a",
+                    "surface-container-lowest": "#0e0e0f",
+                    "error": "#ffb4ab",
+                    "surface-dim": "#131314",
+                    "surface": "#131314",
+                    "on-tertiary-container": "#3f2300",
+                    "primary": "#d0bcff",
+                    "primary-container": "#a078ff",
+                    "tertiary": "#ffb869",
+                    "on-surface-variant": "#cbc3d7",
+                    "on-tertiary-fixed-variant": "#673d00",
+                    "on-secondary-fixed": "#220b4e",
+                    "secondary": "#d0bcff",
+                    "surface-container-high": "#2a2a2b",
+                    "tertiary-fixed": "#ffdcbb",
+                    "surface-container": "#201f20",
+                    "on-secondary": "#372464",
+                    "outline": "#958ea0",
+                    "on-secondary-container": "#c3adf7",
+                    "on-primary-container": "#340080",
+                    "secondary-fixed": "#e9ddff",
+                    "primary-fixed": "#e9ddff",
+                    "tertiary-fixed-dim": "#ffb869"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+        .architectural-border {
+            border: 1px solid rgba(73, 68, 84, 0.15);
+        }
+        .glass-panel {
+            background: rgba(42, 42, 43, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .violet-glow {
+            box-shadow: 0 0 30px rgba(208, 188, 255, 0.1);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 min-h-screen flex">
+<!-- SideNavBar (Authority: JSON) -->
+<aside class="hidden md:flex flex-col h-screen py-8 gap-y-6 bg-[#0e0e0f] w-72 border-r border-[#494454]/15 fixed left-0 top-0 z-50">
+<div class="px-8 mb-4">
+<h1 class="text-lg font-serif italic text-slate-100">Sovereign Wealth</h1>
+<p class="text-[0.65rem] uppercase tracking-[0.2em] text-slate-500 font-label">Institutional Grade</p>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-4 px-4 py-3 text-slate-500 hover:text-slate-300 hover:bg-white/5 transition-all duration-500" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[0.75rem] uppercase tracking-widest">Executive Overview</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-violet-400 border-r-2 border-violet-500 bg-violet-500/5 transition-all duration-500 scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="text-[0.75rem] uppercase tracking-widest">Asset Ledger</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-500 hover:text-slate-300 hover:bg-white/5 transition-all duration-500" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="text-[0.75rem] uppercase tracking-widest">Transaction History</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-500 hover:text-slate-300 hover:bg-white/5 transition-all duration-500" href="#">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<span class="text-[0.75rem] uppercase tracking-widest">Security Logs</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-500 hover:text-slate-300 hover:bg-white/5 transition-all duration-500" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="text-[0.75rem] uppercase tracking-widest">Admin Console</span>
+</a>
+</nav>
+<div class="px-8">
+<button class="w-full bg-gradient-to-br from-[#d0bcff] to-[#a078ff] text-[#23005c] font-bold py-4 text-[0.75rem] uppercase tracking-widest violet-glow transition-opacity active:opacity-80">
+                Add Transaction
+            </button>
+</div>
+<footer class="px-4 mt-auto space-y-1">
+<a class="flex items-center gap-4 px-4 py-2 text-slate-500 hover:text-slate-300 hover:bg-white/5 transition-all duration-500" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[0.75rem] uppercase tracking-widest">Settings</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-2 text-slate-500 hover:text-slate-300 hover:bg-white/5 transition-all duration-500" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="text-[0.75rem] uppercase tracking-widest">Support</span>
+</a>
+</footer>
+</aside>
+<main class="flex-1 md:ml-72 flex flex-col min-h-screen">
+<!-- TopNavBar (Authority: JSON) -->
+<header class="flex justify-between items-center w-full px-8 h-20 bg-[#131314] border-b border-[#494454]/15 sticky top-0 z-40">
+<div class="flex items-center gap-8">
+<span class="text-xl font-medium tracking-tighter text-on-surface font-serif italic">Obsidian Architectural</span>
+<nav class="hidden lg:flex gap-6">
+<a class="text-slate-400 font-medium hover:bg-slate-800/50 transition-colors duration-300 px-2 py-1" href="#">Portfolio</a>
+<a class="text-violet-400 font-bold border-b border-violet-500 px-2 py-1" href="#">Ledger</a>
+<a class="text-slate-400 font-medium hover:bg-slate-800/50 transition-colors duration-300 px-2 py-1" href="#">Vault</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-4 py-1.5 architectural-border text-slate-400 text-sm">
+<span class="material-symbols-outlined text-xs" data-icon="security">security</span>
+<span class="font-label uppercase tracking-tighter">Role Switcher</span>
+</div>
+<div class="flex items-center gap-4 text-slate-400">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+<div class="w-8 h-8 bg-surface-container-high architectural-border flex items-center justify-center overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="professional portrait of a high-net-worth individual with sharp focus and dark editorial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZELgDvtpfYDL2oosi5OaI3XWAsWoaEGfDC3rfy6scPmzhIa-c-QuZujETWt603VgNRpPz6QNoxrJtltu5mbIKky8Z9uwt_cRi8mqKFJSiDxyRWEE08BCP0ePn9bsX75qdMwUl7u7BYdGVbXKSTUcSocucF1c8lhVLniCXue_VlDFq5WV2cQfiA1fV77dfeQK23Tqret2_Bm4Fh-w5Ez3Grifxxs4PA74iRUYPTjldwtK3wRFBS4i6dUdjHY5QMtO0FPS-Kkrz9D3u"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Insights Content -->
+<section class="p-8 lg:p-12 space-y-12 max-w-7xl mx-auto w-full">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-end gap-6 border-b border-[#494454]/15 pb-8">
+<div>
+<span class="text-primary font-label text-[0.75rem] uppercase tracking-[0.2em] mb-2 block">Analytical Intelligence</span>
+<h2 class="text-4xl md:text-5xl font-headline font-light tracking-tight text-on-surface">Monthly Comparison Insights</h2>
+</div>
+<div class="flex items-center gap-4 text-right">
+<div class="p-4 bg-surface-container-low architectural-border">
+<p class="text-slate-500 text-[0.65rem] uppercase tracking-widest mb-1">Current Period</p>
+<p class="text-xl font-body font-bold text-on-surface">OCTOBER 2023</p>
+</div>
+<div class="p-4 bg-surface-container-lowest architectural-border">
+<p class="text-slate-500 text-[0.65rem] uppercase tracking-widest mb-1">Previous Period</p>
+<p class="text-xl font-body font-bold text-on-surface">SEPTEMBER 2023</p>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Main Architectural Bar Chart -->
+<div class="lg:col-span-8 bg-surface-container-low architectural-border p-8 relative overflow-hidden">
+<div class="flex justify-between items-start mb-12">
+<div>
+<h3 class="text-xl font-headline italic mb-1">The Sovereign Ledger</h3>
+<p class="text-slate-500 text-sm">Cross-period liquidity and expense allocation.</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-primary"></div>
+<span class="text-[0.65rem] uppercase tracking-widest text-slate-400">Current</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-outline-variant"></div>
+<span class="text-[0.65rem] uppercase tracking-widest text-slate-400">Previous</span>
+</div>
+</div>
+</div>
+<!-- Chart Simulation -->
+<div class="h-80 flex items-end justify-between gap-4 px-4 border-b border-outline-variant/20 pb-2">
+<!-- Group 1: Fixed Assets -->
+<div class="flex-1 flex flex-col items-center gap-1 group">
+<div class="w-full flex items-end justify-center gap-1 h-full">
+<div class="w-full bg-outline-variant/30 h-[65%] transition-all"></div>
+<div class="w-full bg-primary h-[58%] violet-glow transition-all"></div>
+</div>
+<span class="text-[0.6rem] uppercase tracking-tighter text-slate-500 mt-4 group-hover:text-primary">Fixed Assets</span>
+</div>
+<!-- Group 2: Acquisitions -->
+<div class="flex-1 flex flex-col items-center gap-1 group">
+<div class="w-full flex items-end justify-center gap-1 h-full">
+<div class="w-full bg-outline-variant/30 h-[40%] transition-all"></div>
+<div class="w-full bg-primary h-[82%] violet-glow transition-all"></div>
+</div>
+<span class="text-[0.6rem] uppercase tracking-tighter text-slate-500 mt-4 group-hover:text-primary">Acquisitions</span>
+</div>
+<!-- Group 3: Operations -->
+<div class="flex-1 flex flex-col items-center gap-1 group">
+<div class="w-full flex items-end justify-center gap-1 h-full">
+<div class="w-full bg-outline-variant/30 h-[90%] transition-all"></div>
+<div class="w-full bg-primary h-[75%] violet-glow transition-all"></div>
+</div>
+<span class="text-[0.6rem] uppercase tracking-tighter text-slate-500 mt-4 group-hover:text-primary">Operations</span>
+</div>
+<!-- Group 4: Portfolio Rebal -->
+<div class="flex-1 flex flex-col items-center gap-1 group">
+<div class="w-full flex items-end justify-center gap-1 h-full">
+<div class="w-full bg-outline-variant/30 h-[30%] transition-all"></div>
+<div class="w-full bg-primary h-[35%] violet-glow transition-all"></div>
+</div>
+<span class="text-[0.6rem] uppercase tracking-tighter text-slate-500 mt-4 group-hover:text-primary">Rebalance</span>
+</div>
+<!-- Group 5: Luxury Alts -->
+<div class="flex-1 flex flex-col items-center gap-1 group">
+<div class="w-full flex items-end justify-center gap-1 h-full">
+<div class="w-full bg-outline-variant/30 h-[55%] transition-all"></div>
+<div class="w-full bg-primary h-[43%] violet-glow transition-all"></div>
+</div>
+<span class="text-[0.6rem] uppercase tracking-tighter text-slate-500 mt-4 group-hover:text-primary">Luxury Alts</span>
+</div>
+</div>
+</div>
+<!-- Executive Brief Sidebar -->
+<div class="lg:col-span-4 flex flex-col gap-8">
+<!-- Highest Spending Category -->
+<div class="bg-surface-container-high architectural-border p-6 flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-4">
+<div class="w-1 h-4 bg-primary"></div>
+<span class="text-[0.7rem] uppercase tracking-[0.15em] text-primary font-bold">Highest Outflow</span>
+</div>
+<h4 class="text-3xl font-headline mb-2">Portfolio Acquisitions</h4>
+<p class="text-slate-400 text-sm leading-relaxed font-light">
+                                Strategic allocation into long-term sovereign instruments has increased by 42% this month, reflecting the scheduled quarterly capital deployment strategy.
+                            </p>
+</div>
+<div class="mt-8 border-t border-outline-variant/10 pt-4 flex justify-between items-end">
+<span class="text-4xl font-body font-light tracking-tighter">$1.42M</span>
+<span class="text-primary text-xs font-label uppercase tracking-widest">+22.4% vs prev</span>
+</div>
+</div>
+<!-- Security Badge Observation -->
+<div class="glass-panel architectural-border p-6 relative">
+<div class="absolute top-4 right-4">
+<div class="bg-surface-container-highest/40 backdrop-blur-md px-3 py-1 flex items-center gap-2 architectural-border">
+<div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+<span class="text-[0.6rem] uppercase tracking-widest text-on-surface">Secure Analysis</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary mb-4" data-icon="trending_down">trending_down</span>
+<h5 class="text-lg font-headline italic mb-2">Efficiency Insight</h5>
+<p class="text-slate-300 text-sm leading-relaxed italic">
+                            "A notable <span class="text-primary font-bold">12% decrease in Luxury Alternatives</span> suggests a successful transition toward defensive asset positioning as per the sovereign mandate."
+                        </p>
+</div>
+</div>
+</div>
+<!-- Detailed Observations Table -->
+<div class="bg-surface-container-lowest architectural-border overflow-hidden">
+<div class="px-8 py-6 border-b border-[#494454]/15 bg-surface-container-low flex justify-between items-center">
+<h3 class="text-sm uppercase tracking-[0.2em] font-label font-bold text-slate-300">Detailed Structural Observations</h3>
+<span class="text-[0.65rem] text-slate-500 uppercase tracking-widest">Last Audited: Today, 04:00 GMT</span>
+</div>
+<div class="overflow-x-auto no-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-[0.65rem] uppercase tracking-widest text-slate-500 border-b border-outline-variant/10">
+<th class="px-8 py-4 font-normal">Classification</th>
+<th class="px-8 py-4 font-normal">Oct 23 Value</th>
+<th class="px-8 py-4 font-normal">Variance (%)</th>
+<th class="px-8 py-4 font-normal">Risk Profile</th>
+<th class="px-8 py-4 font-normal text-right">Narrative Status</th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<tr class="border-b border-outline-variant/10 hover:bg-white/5 transition-colors">
+<td class="px-8 py-6 font-medium text-on-surface">Fixed Asset Maintenance</td>
+<td class="px-8 py-6 font-body">$245,000.00</td>
+<td class="px-8 py-6 text-error">-2.4%</td>
+<td class="px-8 py-6">
+<span class="px-2 py-0.5 bg-surface-container-highest text-[0.6rem] uppercase tracking-widest text-slate-300">Static</span>
+</td>
+<td class="px-8 py-6 text-right text-slate-400 italic font-headline">Expected cyclicality.</td>
+</tr>
+<tr class="border-b border-outline-variant/10 hover:bg-white/5 transition-colors">
+<td class="px-8 py-6 font-medium text-on-surface">Operational Overheads</td>
+<td class="px-8 py-6 font-body">$812,400.00</td>
+<td class="px-8 py-6 text-primary">+8.1%</td>
+<td class="px-8 py-6">
+<span class="px-2 py-0.5 bg-primary/10 text-[0.6rem] uppercase tracking-widest text-primary">Monitoring</span>
+</td>
+<td class="px-8 py-6 text-right text-slate-400 italic font-headline">Scaling logistical infrastructure.</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-8 py-6 font-medium text-on-surface">Luxury Lifestyle Alts</td>
+<td class="px-8 py-6 font-body">$120,000.00</td>
+<td class="px-8 py-6 text-primary">-12.0%</td>
+<td class="px-8 py-6">
+<span class="px-2 py-0.5 bg-surface-container-highest text-[0.6rem] uppercase tracking-widest text-slate-300">Optimized</span>
+</td>
+<td class="px-8 py-6 text-right text-slate-400 italic font-headline">Mandate compliance achieved.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Narrative Footer -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 pt-8">
+<div class="space-y-4">
+<h5 class="text-[0.75rem] uppercase tracking-[0.2em] font-label text-primary">Chief Analyst Statement</h5>
+<p class="text-xl font-headline leading-relaxed text-on-surface italic">
+                        The transition observed this month reinforces our commitment to long-term architectural stability. By reducing liquid outflows in luxury categories, the vault has increased its immediate deployment readiness by 14.5% heading into the next fiscal quarter.
+                    </p>
+</div>
+<div class="flex items-center gap-8 justify-end">
+<div class="text-right">
+<p class="text-[0.65rem] uppercase tracking-widest text-slate-500 mb-2">Download Report</p>
+<div class="flex gap-2">
+<button class="p-4 architectural-border hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined" data-icon="picture_as_pdf">picture_as_pdf</span>
+</button>
+<button class="p-4 architectural-border hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined" data-icon="table_chart">table_chart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Mobile Navigation (BottomNavBar Authority: Design Rules) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#131314] flex items-center justify-around z-50 border-t border-[#494454]/15">
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[0.6rem] uppercase tracking-tighter">Overview</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-violet-400" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="text-[0.6rem] uppercase tracking-tighter font-bold">Ledger</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="text-[0.6rem] uppercase tracking-tighter">History</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<span class="text-[0.6rem] uppercase tracking-tighter">Security</span>
+</a>
+</nav>
+</body></html>

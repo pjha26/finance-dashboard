@@ -1,48 +1,195 @@
-import { Wallet, Landmark, CreditCard } from 'lucide-react';
+import React from 'react';
 
 const Accounts = () => {
-    const accounts = [
-        { name: 'Sovereign Checking', type: 'Bank Account', balance: 12450.00, mask: '••• 8432', icon: Landmark },
-        { name: 'Elite Credit', type: 'Credit Card', balance: -1420.50, mask: '••• 9201', icon: CreditCard },
-        { name: 'Vanguard Vault', type: 'Savings Vault', balance: 35000.00, mask: '••• 1120', icon: Wallet },
-    ];
+  return (
+    <div className="animate-in fade-in duration-500">
 
-    return (
-        <div className="flex flex-col gap-8 pb-16 animate-in fade-in duration-500">
-            <header>
-                <h1 className="text-4xl lg:text-[2.5rem] leading-none font-black tracking-tight font-display text-foreground">Accounts & Vaults</h1>
-                <p className="text-muted-foreground mt-2 text-sm max-w-sm">Manage connected ledgers and elite vaults.</p>
-            </header>
+{/* Header Section */}
+<header className="mb-12 flex justify-between items-end">
+<div>
+<h1 className="font-headline text-6xl font-bold tracking-tighter text-on-surface leading-none">Accounts &amp; Wallets</h1>
+<p className="font-label text-on-surface-variant uppercase tracking-[0.3em] text-[10px] mt-4">Estate Governance Cluster • Sovereign Node 017-X</p>
+</div>
+<button className="px-8 py-4 architectural-border text-primary font-label uppercase tracking-widest text-[10px] font-bold hover:bg-primary/5 transition-colors flex items-center gap-2">
+<span className="material-symbols-outlined text-sm">add_card</span>
+            Add New Account
+        </button>
+</header>
+{/* Top Grid: Global Summary & Primary Cards */}
+<div className="grid grid-cols-12 gap-8 mb-12">
+{/* Asset Summary Card */}
+<div className="col-span-12 lg:col-span-4 architectural-border bg-[#1c1b1b] p-10 relative overflow-hidden group">
+<div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] pointer-events-none"></div>
+<div className="relative z-10">
+<p className="font-label uppercase tracking-[0.2em] text-[10px] text-primary/60 mb-1">Total Assets Portfolio</p>
+<div className="flex items-baseline gap-2">
+<span className="font-headline text-5xl font-bold text-on-surface">$2,482,901</span>
+<span className="font-label text-on-surface-variant text-xl">.44</span>
+</div>
+<div className="flex items-center gap-3 mt-6">
+<span className="text-tertiary font-label text-xs tracking-widest border border-tertiary/20 px-2 py-0.5">+12.4%</span>
+<span className="text-on-surface-variant font-label text-[9px] uppercase tracking-widest">vs last month</span>
+</div>
+</div>
+<div className="mt-16 relative z-10">
+<div className="flex justify-between items-end mb-4">
+<span className="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Liquidity Health Index</span>
+<span className="font-label text-xs font-bold text-tertiary">94/100</span>
+</div>
+<div className="w-full bg-outline-variant/10 h-px">
+<div className="bg-tertiary h-px w-[94%] shadow-[0_0_8px_#4edea3]"></div>
+</div>
+</div>
+</div>
+{/* Cards Display Area */}
+<div className="col-span-12 lg:col-span-8 grid grid-cols-2 gap-8">
+{/* Obsidian Card */}
+<div className="architectural-border bg-[#0e0e0e] p-8 flex flex-col justify-between relative overflow-hidden group hover:bg-[#131313] transition-colors cursor-pointer">
+<div className="flex justify-between items-start">
+<div>
+<p className="font-label text-[9px] uppercase tracking-[0.2em] text-on-surface-variant/60 mb-2">Obsidian Reserve</p>
+<p className="font-label text-xl tracking-[0.3em] font-medium text-on-surface">•••• 8821</p>
+</div>
+<span className="material-symbols-outlined text-primary/40 text-3xl">contactless</span>
+</div>
+<div className="flex justify-between items-end mt-12">
+<div>
+<p className="font-label text-[9px] uppercase tracking-widest text-on-surface-variant/60">Balance</p>
+<p className="font-headline text-3xl text-on-surface">$42,012.00</p>
+</div>
+<div className="flex items-center gap-2 opacity-60">
+<span className="text-[10px] font-label uppercase tracking-widest">Visa</span>
+<div className="w-6 h-4 border border-on-surface/20"></div>
+</div>
+</div>
+</div>
+{/* Digital Card */}
+<div className="glass-card p-8 flex flex-col justify-between relative overflow-hidden group cursor-pointer">
+<div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div className="flex justify-between items-start relative z-10">
+<div>
+<p className="font-label text-[9px] uppercase tracking-[0.2em] text-primary/60 mb-2">Digital Expense</p>
+<p className="font-label text-xl tracking-[0.3em] font-medium text-on-surface">•••• 4490</p>
+</div>
+<span className="material-symbols-outlined text-primary/40 text-3xl">digital_wellbeing</span>
+</div>
+<div className="flex justify-between items-end mt-12 relative z-10">
+<div>
+<p className="font-label text-[9px] uppercase tracking-widest text-on-surface-variant/60">Balance</p>
+<p className="font-headline text-3xl text-on-surface">$8,450.90</p>
+</div>
+<div className="flex items-center gap-2 opacity-60">
+<span className="text-[10px] font-label uppercase tracking-widest">MC</span>
+<div className="w-6 h-4 border border-on-surface/20 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{/* Bottom Section: Accounts & Security */}
+<div className="grid grid-cols-12 gap-8">
+{/* Account List */}
+<div className="col-span-12 lg:col-span-8 glass-card p-10">
+<div className="flex justify-between items-center mb-12">
+<h3 className="font-headline text-3xl text-on-surface">Sovereign Accounts</h3>
+<div className="flex gap-4">
+<button className="font-label text-[9px] uppercase tracking-widest text-primary border-b border-primary/40 pb-1">Fiat</button>
+<button className="font-label text-[9px] uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors pb-1">Crypto</button>
+<button className="font-label text-[9px] uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors pb-1">Investments</button>
+</div>
+</div>
+<div className="space-y-2">
+{/* Account 1 */}
+<div className="group flex items-center py-6 border-l border-outline-variant/10 hover:border-primary transition-all relative pl-8 hover:bg-primary/[0.02] cursor-pointer">
+<div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-outline-variant group-hover:bg-primary transition-colors"></div>
+<div className="flex-1">
+<p className="font-headline text-lg text-on-surface">Chase Checking (High Yield)</p>
+<span className="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60">Active • Last synchronized 2h ago</span>
+</div>
+<div className="text-right">
+<p className="font-label text-lg font-medium text-on-surface">$182,490.12</p>
+<span className="font-label text-[9px] uppercase tracking-widest text-on-surface-variant/60">Current Balance</span>
+</div>
+<span className="material-symbols-outlined text-on-surface-variant/30 ml-8 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+{/* Account 2 */}
+<div className="group flex items-center py-6 border-l border-outline-variant/10 hover:border-primary transition-all relative pl-8 hover:bg-primary/[0.02] cursor-pointer">
+<div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-outline-variant group-hover:bg-primary transition-colors"></div>
+<div className="flex-1">
+<p className="font-headline text-lg text-on-surface">Cold Storage Wallet</p>
+<span className="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60">Encrypted • 12.42 BTC</span>
+</div>
+<div className="text-right">
+<p className="font-label text-lg font-medium text-on-surface">$842,001.55</p>
+<span className="font-label text-[9px] uppercase tracking-widest text-on-surface-variant/60">Market Value</span>
+</div>
+<span className="material-symbols-outlined text-on-surface-variant/30 ml-8 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+{/* Account 3 */}
+<div className="group flex items-center py-6 border-l border-outline-variant/10 hover:border-primary transition-all relative pl-8 hover:bg-primary/[0.02] cursor-pointer">
+<div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-outline-variant group-hover:bg-primary transition-colors"></div>
+<div className="flex-1">
+<p className="font-headline text-lg text-on-surface">Vanguard Brokerage</p>
+<span className="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60">Managed Portfolio • VTSAX</span>
+</div>
+<div className="text-right">
+<p className="font-label text-lg font-medium text-on-surface">$1,450,299.77</p>
+<span className="font-label text-[9px] uppercase tracking-widest text-on-surface-variant/60">Invested Equity</span>
+</div>
+<span className="material-symbols-outlined text-on-surface-variant/30 ml-8 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+</div>
+{/* Controls Column */}
+<div className="col-span-12 lg:col-span-4 space-y-8">
+{/* Security Card */}
+<div className="architectural-border bg-[#0e0e0e] p-8">
+<div className="flex items-center gap-3 mb-8">
+<span className="material-symbols-outlined text-primary">verified_user</span>
+<h3 className="font-label uppercase tracking-widest text-[11px] text-on-surface">Card Security Protocol</h3>
+</div>
+<div className="space-y-8">
+<div className="flex items-center justify-between">
+<div>
+<p className="font-label text-xs text-on-surface">Freeze All Nodes</p>
+<p className="font-label text-[9px] text-on-surface-variant/60 uppercase tracking-widest mt-1">Instant global transaction kill-switch</p>
+</div>
+<div className="w-8 h-4 bg-outline-variant/20 relative cursor-pointer">
+<div className="absolute left-0 top-0 h-full w-4 bg-outline-variant transition-all"></div>
+</div>
+</div>
+<div className="flex items-center justify-between">
+<div>
+<p className="font-label text-xs text-on-surface">Digital Payments</p>
+<p className="font-label text-[9px] text-on-surface-variant/60 uppercase tracking-widest mt-1">Allow web-based cipher transactions</p>
+</div>
+<div className="w-8 h-4 bg-primary/20 relative cursor-pointer">
+<div className="absolute right-0 top-0 h-full w-4 bg-primary shadow-[0_0_8px_#8B5CF6]"></div>
+</div>
+</div>
+</div>
+</div>
+{/* Spending Limits */}
+<div className="architectural-border bg-[#1c1b1b] p-8">
+<h3 className="font-headline text-xl text-on-surface mb-8">Spending Thresholds</h3>
+<div className="space-y-6">
+<div>
+<div className="flex justify-between font-label text-[9px] uppercase tracking-widest mb-3">
+<span className="text-on-surface-variant">Daily Threshold ($10,000)</span>
+<span className="text-on-surface">$2,100 utilized</span>
+</div>
+<div className="w-full bg-outline-variant/10 h-px">
+<div className="bg-primary h-px w-[21%] shadow-[0_0_8px_#8B5CF6]"></div>
+</div>
+</div>
+<button className="font-label text-[9px] uppercase tracking-widest text-primary hover:text-on-surface transition-colors">Adjust Risk Parameters →</button>
+</div>
+</div>
+</div>
+</div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {accounts.map((a, i) => (
-                    <div key={i} className="bg-surface rounded-xl p-6 shadow-[0_4px_24px_-4px_rgba(11,28,48,0.02)] flex flex-col gap-6 relative overflow-hidden group hover:shadow-[0_8px_32px_-4px_rgba(11,28,48,0.06)] transition-all">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-brand/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-brand/10 transition-colors" />
-
-                        <div className="flex items-start justify-between relative z-10">
-                            <div className="flex items-center gap-4">
-                                <div className="p-3 bg-surface-alt text-brand rounded-xl">
-                                    <a.icon size={24} />
-                                </div>
-                                <div>
-                                    <h3 className="font-bold text-foreground">{a.name}</h3>
-                                    <p className="text-xs text-muted-foreground uppercase tracking-widest mt-0.5">{a.type}</p>
-                                </div>
-                            </div>
-                            <span className="text-muted-foreground font-mono text-sm tracking-wider">{a.mask}</span>
-                        </div>
-
-                        <div className="relative z-10 pt-4 border-t border-surface-alt">
-                            <p className="text-xs text-muted-foreground mb-1 uppercase tracking-widest font-bold">Ledger Balance</p>
-                            <p className={`text-[2rem] leading-none font-black font-display tracking-tight ${a.balance < 0 ? 'text-danger' : 'text-foreground'}`}>
-                                {a.balance < 0 ? '-' : ''}${Math.abs(a.balance).toLocaleString('en-US', { minimumFractionDigits: 2 })}
-                            </p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Accounts;

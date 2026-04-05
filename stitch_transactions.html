@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Sovereign Ledger: Vault Transactions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;family=Space+Grotesk:wght@300..700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#393939",
+            "on-secondary": "#233143",
+            "on-primary-container": "#340080",
+            "inverse-primary": "#6d3bd7",
+            "on-secondary-container": "#a7b6cc",
+            "surface-container-lowest": "#0e0e0e",
+            "error-container": "#93000a",
+            "secondary-fixed": "#d4e4fa",
+            "primary": "#d0bcff",
+            "tertiary-fixed": "#6ffbbe",
+            "on-primary-fixed": "#23005c",
+            "primary-container": "#a078ff",
+            "on-surface": "#e5e2e1",
+            "on-error": "#690005",
+            "surface-variant": "#353534",
+            "outline-variant": "#494454",
+            "on-background": "#e5e2e1",
+            "surface-dim": "#131313",
+            "surface-container-low": "#1c1b1b",
+            "inverse-on-surface": "#313030",
+            "on-secondary-fixed-variant": "#39485a",
+            "tertiary": "#4edea3",
+            "on-secondary-fixed": "#0d1c2d",
+            "primary-fixed": "#e9ddff",
+            "on-primary": "#3c0091",
+            "on-tertiary-fixed": "#002113",
+            "on-tertiary-container": "#00311f",
+            "background": "#131313",
+            "on-error-container": "#ffdad6",
+            "outline": "#958ea0",
+            "tertiary-container": "#00a572",
+            "surface-container-high": "#2a2a2a",
+            "secondary-container": "#39485a",
+            "on-primary-fixed-variant": "#5516be",
+            "secondary-fixed-dim": "#b9c8de",
+            "tertiary-fixed-dim": "#4edea3",
+            "primary-fixed-dim": "#d0bcff",
+            "surface-tint": "#d0bcff",
+            "surface-container-highest": "#353534",
+            "secondary": "#b9c8de",
+            "error": "#ffb4ab",
+            "surface": "#131313",
+            "inverse-surface": "#e5e2e1",
+            "surface-container": "#201f1f",
+            "on-tertiary": "#003824",
+            "on-tertiary-fixed-variant": "#005236",
+            "on-surface-variant": "#cbc3d7"
+          },
+          "borderRadius": {
+            "DEFAULT": "0px",
+            "lg": "0px",
+            "xl": "0px",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Newsreader"],
+            "body": ["Manrope"],
+            "label": ["Space Grotesk"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      background-color: #131313;
+      color: #e5e2e1;
+      font-family: 'Manrope', sans-serif;
+    }
+    .glass-panel {
+      background: rgba(19, 19, 19, 0.7);
+      backdrop-filter: blur(24px);
+    }
+    .primary-gradient-btn {
+      background: linear-gradient(135deg, #d0bcff 0%, #a078ff 100%);
+    }
+    .ghost-border {
+      border: 1px solid rgba(73, 68, 84, 0.15);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar Navigation Shell -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-[#131313]/70 backdrop-blur-2xl flex justify-between items-center w-full px-8 py-4 border-b border-[#494454]/15">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#d0bcff] font-['Newsreader'] uppercase tracking-widest">THE SOVEREIGN LEDGER</span>
+<div class="hidden md:flex gap-6 font-['Newsreader'] uppercase tracking-widest text-sm">
+<a class="text-[#b9c8de] hover:text-[#d0bcff] transition-all duration-300" href="#">Portfolio</a>
+<a class="text-[#d0bcff] border-b-2 border-[#d0bcff] pb-1" href="#">Ledger History</a>
+<a class="text-[#b9c8de] hover:text-[#d0bcff] transition-all duration-300" href="#">Vaults</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="text-[#b9c8de] hover:bg-[#d0bcff]/10 p-2 transition-all duration-300"><span class="material-symbols-outlined" data-icon="lock">lock</span></button>
+<button class="text-[#b9c8de] hover:bg-[#d0bcff]/10 p-2 transition-all duration-300"><span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span></button>
+<button class="text-[#b9c8de] hover:bg-[#d0bcff]/10 p-2 transition-all duration-300"><span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span></button>
+</div>
+<img alt="Executive User Profile" class="w-10 h-10 object-cover grayscale brightness-75 hover:grayscale-0 transition-all duration-500" data-alt="Close-up portrait of a sophisticated executive in a dark suit with dramatic lighting and a moody aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsvQz9w7shfMjzr_Twg4lzGLtR8G0WpQf-YgeLbEZlyLRJOai_1Vf94O6oQ58pU3oj9ANjSVpdwykJOEWJ5ux3sy4kn-BYVkRGUgczptu5yTbsJD28MY9Uo_yd2idywYrm9n0abowjkntIuAzU1a7lq5RGslGgnliirE6MhDzsYDbiRetDMlNEzmZ4R9blo2OwEfmJQfVszQy6904O-MyNw93QdOuvRxBb38TEpIkmE6hdpx03F8q2xe2Q54hW_RvaCKUEsj_eRCUw"/>
+</div>
+</nav>
+<!-- SideNavBar Navigation Shell (Desktop Only) -->
+<aside class="fixed left-0 top-0 hidden lg:flex flex-col h-screen py-8 px-6 w-72 bg-[#0e0e0e] border-r border-[#494454]/15 z-40 pt-24 font-['Space_Grotesk'] tracking-tight">
+<div class="mb-12">
+<h2 class="text-[#d0bcff] font-['Newsreader'] italic text-2xl">Sovereign Terminal</h2>
+<p class="text-[#b9c8de] opacity-60 text-xs uppercase tracking-widest">Protocol Active</p>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-4 py-3 px-4 text-[#b9c8de] opacity-60 hover:bg-[#353534] hover:opacity-100 border-l-4 border-transparent hover:border-[#d0bcff] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span>Executive Summary</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-4 text-[#b9c8de] opacity-60 hover:bg-[#353534] hover:opacity-100 border-l-4 border-transparent hover:border-[#d0bcff] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span>Asset Nodes</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-4 text-[#b9c8de] opacity-60 hover:bg-[#353534] hover:opacity-100 border-l-4 border-transparent hover:border-[#d0bcff] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span>Governance Clusters</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-4 text-[#b9c8de] opacity-60 hover:bg-[#353534] hover:opacity-100 border-l-4 border-transparent hover:border-[#d0bcff] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span>Verification Logs</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-4 text-[#d0bcff] font-bold bg-[#201f1f] border-l-4 border-[#d0bcff]" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span>Ledger History</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-4 text-[#b9c8de] opacity-60 hover:bg-[#353534] hover:opacity-100 border-l-4 border-transparent hover:border-[#d0bcff] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="encrypted">encrypted</span>
+<span>Security Vault</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-4">
+<button class="primary-gradient-btn text-on-primary font-bold py-4 text-sm tracking-widest active:opacity-80 transition-transform scale-98">
+        INITIATE TRANSFER
+      </button>
+<div class="flex flex-col gap-2 pt-6 border-t border-[#494454]/15">
+<a class="flex items-center gap-3 text-xs text-[#b9c8de] opacity-60 hover:opacity-100" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="sensors">sensors</span> System Status
+        </a>
+<a class="flex items-center gap-3 text-xs text-[#b9c8de] opacity-60 hover:opacity-100" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span> Logout
+        </a>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="lg:ml-72 pt-24 pb-12 px-8 min-h-screen">
+<!-- Title Section -->
+<header class="mb-12">
+<h1 class="text-5xl md:text-6xl font-headline font-bold text-on-surface tracking-tight mb-4">The Sovereign Ledger: <span class="italic font-light">Vault Transactions</span></h1>
+<p class="font-label text-secondary uppercase tracking-[0.3em] text-sm">Protocol Sequence: ALPHA-9942-X</p>
+</header>
+<!-- Executive Summary Glass Panel -->
+<section class="glass-panel ghost-border p-10 mb-16 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] pointer-events-none"></div>
+<div class="relative z-10 grid md:grid-cols-2 gap-12 items-end">
+<div>
+<span class="font-label text-primary text-xs uppercase tracking-widest mb-4 block">Executive Narrative</span>
+<p class="font-headline text-2xl md:text-3xl text-on-surface leading-relaxed">
+            Portfolio activity remains within <span class="text-tertiary">optimal governance parameters</span>. 12 Nodes reconciled in the last cycle. Aggregate risk exposure has decreased by <span class="text-tertiary">1.4%</span> since the previous epoch.
+          </p>
+</div>
+<div class="flex flex-col gap-6 md:text-right">
+<div class="flex justify-end gap-12">
+<div>
+<p class="font-label text-secondary text-xs uppercase tracking-widest mb-1">Active Nodes</p>
+<p class="font-headline text-3xl">442</p>
+</div>
+<div>
+<p class="font-label text-secondary text-xs uppercase tracking-widest mb-1">Vault Integrity</p>
+<p class="font-headline text-3xl text-tertiary">99.9%</p>
+</div>
+</div>
+<div class="w-full h-px bg-outline-variant/20"></div>
+<div class="flex justify-end items-center gap-4 font-label text-sm">
+<span class="material-symbols-outlined text-primary" data-icon="update">update</span>
+<span class="text-secondary opacity-60">Last verified: Today, 04:12 UTC</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Search and Filter Bar -->
+<div class="flex flex-col md:flex-row gap-6 mb-12 items-center">
+<div class="relative flex-1 group w-full">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-secondary opacity-40 group-focus-within:text-primary transition-colors" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-b border-outline-variant/30 focus:border-primary focus:ring-0 px-12 py-4 font-label text-sm transition-all outline-none" placeholder="Filter by Node ID, Asset Class, or Verification Hash..." type="text"/>
+</div>
+<div class="flex gap-4 w-full md:w-auto">
+<button class="ghost-border px-6 py-4 font-label text-xs tracking-widest flex items-center gap-2 hover:bg-surface-container-high transition-colors uppercase">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span> Period
+        </button>
+<button class="ghost-border px-6 py-4 font-label text-xs tracking-widest flex items-center gap-2 hover:bg-surface-container-high transition-colors uppercase">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span> Filters
+        </button>
+</div>
+</div>
+<!-- Transaction Groups -->
+<div class="space-y-16">
+<!-- Group 1: Real Estate -->
+<section>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-1.5 h-1.5 bg-primary"></div>
+<h3 class="font-label text-secondary text-sm uppercase tracking-[0.4em]">Node 017-X: Real Estate Assets</h3>
+</div>
+<div class="space-y-px">
+<!-- Transaction Row 1 -->
+<div class="grid grid-cols-12 gap-4 items-center p-6 bg-surface-container hover:bg-surface-container-highest transition-all duration-300 group">
+<div class="col-span-1 flex items-center justify-center">
+<div class="w-10 h-10 flex items-center justify-center bg-background">
+<span class="material-symbols-outlined text-primary" data-icon="apartment">apartment</span>
+</div>
+</div>
+<div class="col-span-3">
+<p class="font-body text-sm font-semibold text-on-surface">Capital Accretion: Unit 402</p>
+<p class="font-label text-[10px] text-secondary opacity-50 uppercase tracking-tighter">TX: 0x442...EF89</p>
+</div>
+<div class="col-span-2">
+<p class="font-label text-xs text-secondary opacity-60 mb-1">NODE ID</p>
+<p class="font-body text-sm">RE-ALPHA-42</p>
+</div>
+<div class="col-span-2">
+<div class="flex items-center gap-2 text-tertiary">
+<span class="material-symbols-outlined text-sm" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Verified</span>
+</div>
+<p class="font-label text-[10px] text-secondary opacity-40 uppercase">Conf: 12,442</p>
+</div>
+<div class="col-span-3 text-right">
+<p class="font-headline text-lg">+ 14,240.00 USD</p>
+<p class="font-label text-[10px] text-secondary opacity-50 uppercase tracking-tighter">OCT 14, 2023 | 14:22</p>
+</div>
+<div class="col-span-1 flex justify-end">
+<button class="opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-secondary" data-icon="north_east">north_east</span>
+</button>
+</div>
+</div>
+<!-- Transaction Row 2 -->
+<div class="grid grid-cols-12 gap-4 items-center p-6 bg-surface-container-low hover:bg-surface-container-highest transition-all duration-300 group">
+<div class="col-span-1 flex items-center justify-center">
+<div class="w-10 h-10 flex items-center justify-center bg-background">
+<span class="material-symbols-outlined text-primary" data-icon="domain">domain</span>
+</div>
+</div>
+<div class="col-span-3">
+<p class="font-body text-sm font-semibold text-on-surface">Governance Fee: Prop-MGT</p>
+<p class="font-label text-[10px] text-secondary opacity-50 uppercase tracking-tighter">TX: 0x881...AC21</p>
+</div>
+<div class="col-span-2">
+<p class="font-label text-xs text-secondary opacity-60 mb-1">NODE ID</p>
+<p class="font-body text-sm">RE-BETA-09</p>
+</div>
+<div class="col-span-2">
+<div class="flex items-center gap-2 text-tertiary">
+<span class="material-symbols-outlined text-sm" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Verified</span>
+</div>
+<p class="font-label text-[10px] text-secondary opacity-40 uppercase">Conf: 9,211</p>
+</div>
+<div class="col-span-3 text-right">
+<p class="font-headline text-lg">- 2,100.00 USD</p>
+<p class="font-label text-[10px] text-secondary opacity-50 uppercase tracking-tighter">OCT 12, 2023 | 09:15</p>
+</div>
+<div class="col-span-1 flex justify-end">
+<button class="opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-secondary" data-icon="north_east">north_east</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Group 2: Equities -->
+<section>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-1.5 h-1.5 bg-primary"></div>
+<h3 class="font-label text-secondary text-sm uppercase tracking-[0.4em]">Node 044-Y: Sovereign Equities</h3>
+</div>
+<div class="space-y-px">
+<!-- Transaction Row 3 -->
+<div class="grid grid-cols-12 gap-4 items-center p-6 bg-surface-container hover:bg-surface-container-highest transition-all duration-300 group">
+<div class="col-span-1 flex items-center justify-center">
+<div class="w-10 h-10 flex items-center justify-center bg-background">
+<span class="material-symbols-outlined text-primary" data-icon="monitoring">monitoring</span>
+</div>
+</div>
+<div class="col-span-3">
+<p class="font-body text-sm font-semibold text-on-surface">Divident Liquidation: NASDAQ:GOL</p>
+<p class="font-label text-[10px] text-secondary opacity-50 uppercase tracking-tighter">TX: 0x112...BD23</p>
+</div>
+<div class="col-span-2">
+<p class="font-label text-xs text-secondary opacity-60 mb-1">NODE ID</p>
+<p class="font-body text-sm">EQ-GOLD-01</p>
+</div>
+<div class="col-span-2">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="pending">pending</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Pending</span>
+</div>
+<p class="font-label text-[10px] text-secondary opacity-40 uppercase">Conf: 2</p>
+</div>
+<div class="col-span-3 text-right">
+<p class="font-headline text-lg">+ 82,900.00 USD</p>
+<p class="font-label text-[10px] text-secondary opacity-50 uppercase tracking-tighter">OCT 14, 2023 | 16:45</p>
+</div>
+<div class="col-span-1 flex justify-end">
+<button class="opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-secondary" data-icon="north_east">north_east</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Architectural Background Decoration -->
+<div class="fixed top-[20%] right-[-5%] w-[40vw] h-[40vw] border border-primary/5 rotate-45 pointer-events-none"></div>
+<div class="fixed bottom-[-10%] left-[10%] w-[30vw] h-[30vw] border border-primary/5 -rotate-12 pointer-events-none"></div>
+</main>
+<!-- FAB Suppression (Per Instructions) - None Rendered -->
+</body></html>

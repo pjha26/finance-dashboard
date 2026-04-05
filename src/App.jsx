@@ -5,6 +5,7 @@ import Transactions from './pages/Transactions';
 import Budgets from './pages/Budgets';
 import Portfolio from './pages/Portfolio';
 import Accounts from './pages/Accounts';
+import Insights from './pages/Insights';
 import Sidebar from './components/common/Sidebar';
 import { Navbar } from './components/common/Navbar';
 import { FinanceProvider } from './context/FinanceContext';
@@ -47,6 +48,9 @@ function App() {
             } />
             <Route path="/accounts" element={
               <AppShell><Accounts /></AppShell>
+            } />
+            <Route path="/insights" element={
+              <AppShell><Insights /></AppShell>
             } />
           </Routes>
         </BrowserRouter>
