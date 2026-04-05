@@ -6,6 +6,9 @@ import Budgets from './pages/Budgets';
 import Portfolio from './pages/Portfolio';
 import Accounts from './pages/Accounts';
 import Insights from './pages/Insights';
+import Forecasts from './pages/Forecasts';
+import Network from './pages/Network';
+import Temporal from './pages/Temporal';
 import Sidebar from './components/common/Sidebar';
 import { Navbar } from './components/common/Navbar';
 import { FinanceProvider } from './context/FinanceContext';
@@ -55,6 +58,15 @@ function App() {
             } />
             <Route path="/insights" element={
               <AppShell><Insights /></AppShell>
+            } />
+            <Route path="/forecasts" element={
+              <AppShell><Forecasts /></AppShell>
+            } />
+            <Route path="/network" element={
+              <AppShell><Network /></AppShell>
+            } />
+            <Route path="/temporal" element={
+              <AppShell><Temporal /></AppShell>
             } />
           </Routes>
         </BrowserRouter>

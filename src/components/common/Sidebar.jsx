@@ -1,5 +1,5 @@
 import { NavLink, Link } from 'react-router-dom';
-import { LayoutDashboard, Receipt, User, DollarSign, Sun, Moon, Target, Briefcase, Wallet, LineChart } from 'lucide-react';
+import { LayoutDashboard, Receipt, User, DollarSign, Sun, Moon, Target, Briefcase, Wallet, LineChart, Activity, Network as NetworkIcon, Calendar } from 'lucide-react';
 import { useAppContext } from '../../context/AppContext';
 
 const Sidebar = () => {
@@ -88,6 +88,44 @@ const Sidebar = () => {
                 >
                     <Briefcase size={19} />
                     Investment Portfolio
+                </NavLink>
+
+                {/* --- Elite Analytical Nodes --- */}
+                <NavLink
+                    to="/forecasts"
+                    className={({ isActive }) =>
+                        `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${isActive
+                            ? 'bg-brand text-surface shadow-[0_4px_24px_-4px_rgba(19,27,46,0.3)]'
+                            : 'text-muted-foreground hover:bg-surface-2 hover:text-foreground'
+                        }`
+                    }
+                >
+                    <Activity size={19} />
+                    Terminal Forecasts
+                </NavLink>
+                <NavLink
+                    to="/network"
+                    className={({ isActive }) =>
+                        `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${isActive
+                            ? 'bg-brand text-surface shadow-[0_4px_24px_-4px_rgba(19,27,46,0.3)]'
+                            : 'text-muted-foreground hover:bg-surface-2 hover:text-foreground'
+                        }`
+                    }
+                >
+                    <NetworkIcon size={19} />
+                    Asset Nodes
+                </NavLink>
+                <NavLink
+                    to="/temporal"
+                    className={({ isActive }) =>
+                        `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${isActive
+                            ? 'bg-brand text-surface shadow-[0_4px_24px_-4px_rgba(19,27,46,0.3)]'
+                            : 'text-muted-foreground hover:bg-surface-2 hover:text-foreground'
+                        }`
+                    }
+                >
+                    <Calendar size={19} />
+                    Temporal Expenses
                 </NavLink>
             </nav>
 
